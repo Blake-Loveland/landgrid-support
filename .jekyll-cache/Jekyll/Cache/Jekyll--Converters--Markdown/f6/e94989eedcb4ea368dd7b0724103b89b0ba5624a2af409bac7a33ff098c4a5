@@ -1,0 +1,106 @@
+I"�<p>In order to track down the bug you experienced in our error logs, we need to know a few key bits of info:</p>
+
+<p>1) The exact Date + Time the error last occurred.</p>
+
+<p><small>Example: 7/22 4:52pm</small></p>
+
+<p>2) iPhone Version Number</p>
+
+<p><small>Example: 12.1</small></p>
+
+<p>3) Model Number</p>
+
+<p><small>Example: A1901</small></p>
+
+<p>4) Landgrid App Version Number</p>
+
+<p><small>Example: 1.14</small></p>
+
+<p><strong>Note that:</strong></p>
+
+<ul>
+  <li>The Model Number will never change, so you’ll only need to get it once if you can associate it     with a single Surveyor or device.</li>
+  <li>The iPhone Version will change occasionally.</li>
+  <li>The Date+Time and Landgrid Version Number is needed for every bug.</li>
+  <li>Below is the process for getting the iPhone Version Number, the Model Number, wnd the Landgrid App Version Number.</li>
+</ul>
+
+<p><br /><br /></p>
+
+<hr />
+
+<p><br /><br /></p>
+
+<h3 id="get-iphoneios-version--model-number">Get iPhone/iOS Version + Model Number</h3>
+
+<p>1) Click on the <strong>Settings Icon</strong></p>
+
+<p><img src="/img/ios_settings.png" /></p>
+
+<p>2) Click <strong>General.</strong></p>
+
+<center>
+
+<img src="/img/ios_model_1.png" />
+<br /><br />
+
+</center>
+
+<p>3) Click <strong>About</strong></p>
+
+<center>
+
+<img src="/img/ios_model_2.png" />
+<br /><br />
+
+</center>
+
+<p>4) Write down the <strong>Version Number</strong></p>
+
+<center>
+
+<img src="/img/ios_model_3.png" />
+
+<br /><br />
+</center>
+
+<p>5) Write down the <strong>Model Number</strong></p>
+
+<center>
+
+<img src="/img/ios_model_4.png" />
+
+</center>
+
+<p><br /><br /></p>
+
+<hr />
+
+<p><br /><br /></p>
+
+<h3 id="get-landgrid-app-version">Get Landgrid App Version</h3>
+
+<p>1) Open the Landgrid App and Log in.</p>
+
+<p>2) Navigate to Profile
+<img src="/img/profile_icon.png" /></p>
+
+<p>3) Write down the <strong>Landgrid Version Number</strong> at the bottom of the screen. Example: 1.15.0</p>
+
+<p><br /><br /></p>
+
+<hr />
+
+<p><br /><br /></p>
+
+<h3 id="submit-your-bug">Submit Your Bug</h3>
+
+<p>Here’s a template you can use to submit your bug.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>What Happened:
+Date and Time:
+iPhone Version Number:
+iPhone Model Number:
+Landgrid App Version Number:
+</code></pre></div></div>
+:ET

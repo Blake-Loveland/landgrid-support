@@ -1,0 +1,28 @@
+I"N
+<p><em>This feature is only available with a Team, Enterprise, or Unlimited landgrid.com account. <a href="https://landgrid.com/plans">Click here to upgrade your account</a>.</em></p>
+
+<p>If you are able to invite collaborators, you can also customize the permissions levels of those invited to your landgrid.com account. To change permissions, click on the dropdown menu of your group (top left of the page) and choose “Members”. This will bring you to a list of current group members and their permission levels. To change the permission level of a member, simply click their role (ie “Manager”). This will bring up a dropdown list from which you can choose. You can change permissions settings at any time.</p>
+
+<p><img src="/img/Members.PNG" alt="Members.PNG" /></p>
+
+<p>Here are the definitions of the various permissions levels:</p>
+
+<p><strong>Manager:</strong>
+Full permission to edit data, create and delete projects, and survey properties. Full access to the account, including updating billing. You can have multiple managers.</p>
+
+<p><strong>Member:</strong>
+Members can see all projects and all data in a Landgrid account. They can: survey properties, edit (QC) survey responses, draw focus areas, upload datasets from spreadsheets, and export datasets. However, they cannot: create, modify, or delete projects; add or remove users in the account; or change billing and other account settings.</p>
+
+<p><strong>Surveyor:</strong>
+Surveyors CANNOT log in to a landgrid.com account except for via the app on a mobile device. The account created when you invite someone as a Surveyor ONLY allows them to contribute to a landgrid.com account by surveying properties with the LOVELAND App. This is ideal if you have a hired workforce of surveyors who you want collecting property data in the field, but not modifying data once it’s in your landgrid.com account.</p>
+
+<p><strong>Billing Contact:</strong>
+If you’d like to pass the payment reins to someone else in your account, you can set them as the “Billing Contact.” This will give them access to change payment settings.</p>
+
+<p><strong>Super Manager:</strong>
+Through our <a href="https://landgrid.com/enterprise">Landgrid Enterprise</a> plans, you can create sub-groups. Each sub-group has its own projects, members, managers, and data. Supermanagers are able to create and manage all of your sub-groups.</p>
+
+<p><strong>Note:</strong> To remove a member from your group, follow the same procedure as outlined above and select “Remove from Group” from the dropdown list.</p>
+
+<p><strong>Note:</strong> You can change permissions settings at any time.</p>
+:ET

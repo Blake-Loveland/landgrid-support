@@ -1,0 +1,34 @@
+I"W<p><em>This feature is only available with a Landgrid Pro, Team, or Enterprise account. <a href="https://landgrid.com/plans">Click here to upgrade your account</a>.</em></p>
+
+<p>We want to give you control over what you share, and who you share it with.
+Here are a few ways to share a landgrid.com Project!</p>
+
+<h3 id="option-1-share-by-changing-privacy-options">Option 1: Share by Changing Privacy Options</h3>
+
+<p>Click “Share”, located on the left hand sidebar just under Save. You’ll see a drawer pop out titled “Sharing &amp; Access”, where you can change sharing settings. Click “Save Sharing Settings” when you’re done to make changes permanent. Sharing permissions can be changed at any time.</p>
+
+<p><strong>Private: only my group can view and edit</strong>
+This setting means what it says: data, surveys, and anything else attached to this project are only viewable by you and, where applicable, by other landgrid.com members who you have invited to collaborate with in your group account.</p>
+
+<p><strong>Anyone with the link can view</strong>
+This is akin to sharing a document with “read-only” access. Anyone who receives your landgrid.com link will be able to view all the data, comments, notes, and survey information collected in the map, and they will be able to export data in CSV format.</p>
+
+<p>However, they will <em>NOT</em> be able to edit, delete, or modify any data in your map. They will not be able to access any of the menus which allow for manipulation of data and map settings. All of that will remain off limits.</p>
+
+<p>Your map will be “live” – that is as you add data to it, whoever has the link to your public map will see new data coming in.</p>
+
+<p>You can always flip your sharing settings back to “Keep this map private” to remove the ability for people to see your map via its URL.</p>
+
+<p>Note: Sharing in this fashion does not require the person you are sharing with to have a landgrid.com account.</p>
+
+<p><strong>Public: anyone can find and view it</strong>
+By choosing this option, anyone with the link is able to view this Project; it will also be made searchable within landgrid.com for others working in the same geography as you and they’ll be able to add a copy of your data to their map. However, anyone outside your group will be unable to delete or modify it.</p>
+
+<h3 id="option-2-share-by-embedding-your-map">Option 2: Share by Embedding Your Map</h3>
+
+<p>If you have a website, blog, news story, or other web page and you’d like to embed an accompanying landgrid.com Project, well cool! Simply copy the embed code for the project (‘Share’ button on left hand side, set map settings to “public”) and insert using the HTML editor (or whatever the appropriate format is given the platform you’re publishing with).</p>
+
+<p>Your embedded map will show things from the project like parcel color coding, commenting, your survey feed and data. Nothing will be editable by people interacting with the embedded map.</p>
+
+<p>Your embedded map will be “live” – that is as you add data to it, people visiting your embedded map with will see new data coming in.</p>
+:ET

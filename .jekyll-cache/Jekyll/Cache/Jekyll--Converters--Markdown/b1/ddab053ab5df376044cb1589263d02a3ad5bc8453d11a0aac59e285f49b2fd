@@ -1,0 +1,222 @@
+I"�=<p>The Loveland tile service provides parcel tiles in raster and vector formats for use with web mapping tools like <a href="https://www.mapbox.com/help/define-mapbox-gl/">Mapbox GL</a> and <a href="https://leafletjs.com/">Leaflet</a>. This service is available to clients with a <a href="https://makeloveland.com/parcels">nationwide data license</a>.</p>
+
+<p>This tool is still in beta. Please direct feedback, bugs and questions to <a href="mailto:team@makeloveland.com">team@makeloveland.com</a>.</p>
+
+<h2 id="api">API</h2>
+
+<p>All requests will be to the <code class="highlighter-rouge">https://tiles.makeloveland.com</code> domain, with the paths described below per-request.</p>
+
+<h3 id="authentication-and-tokens">Authentication and tokens</h3>
+
+<p>All requests to the API must include a <code class="highlighter-rouge">token</code> parameter. Please contact us via <a href="mailto:team@makeloveland.com">team@makeloveland.com</a> to get your API token during the beta.</p>
+
+<h3 id="standard-parcel-tiles">Standard parcel tiles</h3>
+
+<p>A nationwide layer of parcel outlines provided in vector (<a href="https://www.mapbox.com/vector-tiles/specification/">MVT</a>) and raster (PNG) formats.</p>
+
+<h4 id="tilejson">TileJSON</h4>
+
+<p>We serve <a href="https://www.mapbox.com/help/define-tilejson/">TileJSON</a>-formatted metadata for generic parcel tiles:</p>
+
+<ul>
+  <li>Raster tiles: <code class="highlighter-rouge">/api/v1/parcels</code></li>
+  <li>Vector tiles: <code class="highlighter-rouge">/api/v1/parcels?format=mvt</code></li>
+</ul>
+
+<h4 id="tiles">Tiles</h4>
+
+<p>The base tile path is <code class="highlighter-rouge">/api/v1/parcels/{z}/{x}/{y}.format</code>. Supported formats are <code class="highlighter-rouge">mvt</code>, <code class="highlighter-rouge">png</code>, and <code class="highlighter-rouge">json</code> (<a href="https://blog.mapbox.com/how-interactivity-works-with-utfgrid-3b7d437f9ca9">for UTF grids</a>). PNG tiles are provided with the default loveland style.</p>
+
+<h4 id="leaflet-raster-layer-example">Leaflet raster layer example</h4>
+
+<p>To add raster tiles to a Leaflet map:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L.tileLayer(
+  'https://tiles.makeloveland.com/api/v1/parcels/{z}/{x}/{y}.png?token='
+).addTo(map)
+</code></pre></div></div>
+
+<h4 id="mapbox-gl-js-vector-example">Mapbox GL JS vector example</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;script
+    </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-3.4.1.min.js"</span>
+    <span class="na">integrity=</span><span class="s">"sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="</span>
+    <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">'https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css'</span> <span class="na">rel=</span><span class="s">'stylesheet'</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+      <span class="nt">body</span><span class="o">,</span> <span class="nf">#map</span> <span class="p">{</span>
+        <span class="nl">height</span><span class="p">:</span> <span class="m">100vh</span><span class="p">;</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">100vw</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"map"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+    <span class="nt">&lt;script&gt;</span>
+      <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://tiles.makeloveland.com</span><span class="dl">'</span>
+      <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">accessToken</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">pk.</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// Insert your Mapbox token here</span>
+      <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nb">Map</span><span class="p">({</span>
+        <span class="na">container</span><span class="p">:</span> <span class="dl">'</span><span class="s1">map</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">style</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mapbox://styles/mapbox/light-v9</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">zoom</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+        <span class="na">center</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">83.139981</span><span class="p">,</span> <span class="mf">42.398763</span><span class="p">],</span>
+        <span class="na">showTileBoundaries</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">});</span>
+      <span class="nx">map</span><span class="p">.</span><span class="nx">showTileBoundaries</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+      <span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Create a parcel layer</span>
+        <span class="kd">var</span> <span class="nx">parcelCreate</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+          <span class="na">url</span><span class="p">:</span> <span class="nx">url</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/api/v1/parcels?format=mvt&amp;token=</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span>
+        <span class="p">});</span>
+        <span class="nx">parcelCreate</span><span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error getting parcel layer</span><span class="dl">'</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="nx">$</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="nx">parcelCreate</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">setup</span><span class="p">);</span>
+
+        <span class="kd">function</span> <span class="nx">setup</span><span class="p">(</span><span class="nx">layerData</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">layerData</span><span class="p">;</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Got parcel layer</span><span class="dl">'</span><span class="p">,</span> <span class="nx">layerData</span><span class="p">);</span>
+
+          <span class="c1">// Register the parcel source using the tile URL we just got</span>
+          <span class="nx">map</span><span class="p">.</span><span class="nx">addSource</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">vector</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">tiles</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">tiles</span>
+          <span class="p">});</span>
+
+          <span class="c1">// Add basic parcel outlines</span>
+          <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">({</span>
+            <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">parcels</span><span class="dl">'</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">source</span><span class="dl">'</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">source-layer</span><span class="dl">'</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">minzoom</span><span class="dl">'</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">maxzoom</span><span class="dl">'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+            <span class="na">layout</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">visibility</span><span class="p">:</span> <span class="dl">'</span><span class="s1">visible</span><span class="dl">'</span>
+            <span class="p">},</span>
+            <span class="dl">'</span><span class="s1">paint</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span>
+              <span class="dl">'</span><span class="s1">line-color</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#649d8d</span><span class="dl">'</span>
+            <span class="p">}</span>
+          <span class="p">});</span>
+        <span class="p">};</span>
+      <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="custom-layers">Custom layers</h3>
+
+<p>Use a Layer to get tiles with custom styles (raster tiles only).</p>
+
+<p>A Layer defines a set of data and styles. Each layer has a unique ID. Each unqiue set of styles defines new layer – you cannot edit existing layers.</p>
+
+<h3 id="building-layers">Building layers</h3>
+
+<p>To create a layer, POST a layer definition to <code class="highlighter-rouge">/api/v1/sources?token=</code>.</p>
+
+<h4 id="vector-tiles">Vector tiles</h4>
+
+<p>Pass the <code class="highlighter-rouge">?format='mvt'</code> parameter to a layer request to get vector-first TileJSON.
+Otherwise, vector tile urls will be included in the tilejson under the non-standard <code class="highlighter-rouge">vector</code>
+key.</p>
+
+<h4 id="layer-definitions">Layer definitions</h4>
+
+<p>A layer definition has:</p>
+
+<ul>
+  <li>A fixed query to select parcel data</li>
+  <li>Optionally, a string of cartocss styles (see “composing styles” below). We apply
+the default Loveland styles if you don’t specify any.</li>
+</ul>
+
+<h4 id="sample-layer-request">Sample layer request</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /api/v1/sources?token=
+{
+  query: {
+    parcels: true
+  },
+  styles: 'Map{} #loveland { line-color: #69387a; }'
+}
+</code></pre></div></div>
+
+<h4 id="sample-layer-response">Sample layer response</h4>
+
+<p>You’ll get a tilejson response that includes:</p>
+
+<ul>
+  <li>a unique layer ID</li>
+  <li>the tile URL template for use in slippy maps</li>
+  <li>the query and styles you submitted</li>
+</ul>
+
+<p><strong>Warning</strong>: Do not cache or otherwise store the layer ID or tile path between
+sessions. The layer ID and paths you receive may change at any time.
+Always recreate the layer by POSTing your layer definition.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "tilejson":"2.1.0",
+  "id":"e1cd578db8e35949c5c25a479124035a2fa14fbe",
+  "maxZoom":21,
+  "tiles":["https://tiles.makeloveland.com/api/v1/sources/parcel/layers/e1cd578db8e35949c5c25a479124035a2fa14fbe/{z}/{x}/{y}.png?token="],
+  "grids":["https://tiles.makeloveland.com/api/v1/sources/parcel/layers/e1cd578db8e35949c5c25a479124035a2fa14fbe/{z}/{x}/{y}.json?token="],
+  "vector":["https://tiles.makeloveland.com/api/v1/sources/parcel/layers/e1cd578db8e35949c5c25a479124035a2fa14fbe/{z}/{x}/{y}.mvt?token="],
+  "query": {
+    "parcel": true
+  },
+  "fields":{},
+  "styles":"Map { background-color: rgba(0,0,0,0); } #loveland { line-color: #69387a; }"
+}
+</code></pre></div></div>
+
+<h4 id="composing-styles">Composing styles</h4>
+
+<p>You can style raster tiles by composing <a href="https://carto.com/developers/styling/cartocss/">CartoCSS styles</a>. Styles should be applied to the <code class="highlighter-rouge">#loveland</code> layer.</p>
+
+<p>Some sample styles that illustrate styling based on zoom level:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#loveland {
+  line-color: #69387a;
+  line-width: 0.25;
+
+  [zoom &gt;= 14] { line-opacity: 0.5; }
+  [zoom &gt;= 15] { line-width: 1.5; line-opacity: 1;}
+  [zoom &gt;= 17] { line-width: 2.5; }
+  [zoom &gt;= 18] { line-width: 3; }
+}
+</code></pre></div></div>
+
+<h4 id="leaflet-raster-layer-example-1">Leaflet raster layer example</h4>
+
+<p>To add a custom styled layer to Leaflet:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$.ajax({
+  method: 'POST',
+  url: 'https://makeloveland.com/api/v1/sources?token=...',
+  contentType: 'application/json; charset=utf-8',
+  dataType: 'json',
+  data: JSON.stringify({
+    query: {
+      parcel: true,
+    },
+    styles: 'Map { background-color: rgba(0,0,0,0); } #loveland { polygon-fill: #000; }',
+  }),
+}).done(function(data) {
+  console.log('Got layer', data);
+  L.tileLayer(data.tiles[0]).addTo(map);
+});
+</code></pre></div></div>
+
+:ET

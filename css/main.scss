@@ -24,6 +24,11 @@ $eggplant-dark-t:  hsla(304.3, 20%, 40%, 0.9);
 $ll:               $eggplant;
 $link-color:       #1f628c;
 
+$land: hsl(29, 71%, 95%); // #faede1 -- this is the map's land color
+$land-dark: hsl(29, 71%, 80%); 
+$frame: $land-dark;
+
+
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);

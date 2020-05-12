@@ -2,7 +2,6 @@
 layout: default
 ---
 
-<div class="col-sm-3">
   <div class="sidenav">
     {% include search.html %}
 
@@ -21,9 +20,8 @@ layout: default
       </div>
     {% endfor %}
   </div>
-</div>
 
-<div class="col-sm-9 col-md-7">
+<main>
   <h2>{{ page.title }}</h2>
   {{ content }}
-</div>
+</main>

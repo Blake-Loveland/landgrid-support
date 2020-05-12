@@ -1,0 +1,126 @@
+I" <h4 id="basics">Basics</h4>
+
+<p>Thank you for your interest in our Parcel API! This tool is now out of beta, so please direct feedback, bugs and questions to <strong>help@landgrid.com</strong>. To begin with, all requests will be to the <code class="highlighter-rouge">https://landgrid.com</code> domain, with the paths described below per-request.</p>
+
+<h4 id="authentication-and-tokens">Authentication and tokens</h4>
+
+<p>All requests to the API must include a <code class="highlighter-rouge">token</code> parameter. If you have a Loveland data license, you can find this in <strong>Account Settings &gt; Preferences</strong> after logging into your Site Control account.</p>
+
+<h4 id="place-and-parcel-paths-for-context">Place and Parcel Paths for Context</h4>
+
+<p>Most API requests can take an optional <code class="highlighter-rouge">context</code> parameter that will narrow down the search to a specific area. These <code class="highlighter-rouge">context</code> values are in the form of paths.</p>
+
+<p>The <code class="highlighter-rouge">context</code> parameter is most important to provide when doing searches that can have results from many different parts of the US. Specifically address or parcel number searches. The <code class="highlighter-rouge">context</code> parameter should not be provided when doing latitude and longitude based searches.</p>
+
+<p>At Loveland we use place <em>pathnames</em> to specify administrative boundaries and uniquely describe a geographic region. This includes the country, state, county, and county subdivision. For example, <code class="highlighter-rouge">/us/mi/wayne/detroit</code> for Detroit or <code class="highlighter-rouge">/us/oh/hamilton</code> for Hamilton County, OH. If you’re not sure what to use for your requests, browsing on <a href="https://landgrid.com/us">landgrid.com</a> to the desired place and copying the path out of the URL is a good way to get started.</p>
+
+<p><em>Parcel paths</em> are similar, and include an integer ID at the end. For example, <code class="highlighter-rouge">/us/mi/wayne/detroit/555</code>. These uniquely identify a parcel in our database in a simple, human-readable format.</p>
+
+<h2 id="parcel-search">Parcel search</h2>
+
+<h3 id="by-lat-long-reverse-geocoding">By lat-long (reverse geocoding)</h3>
+
+<p><code class="highlighter-rouge">GET /api/v1/search.json?lat=&lt;y&gt;&amp;lon=&lt;x&gt;&amp;token=&lt;token&gt;</code></p>
+
+<p>We recommend using lat-long search for most lookups. Because parcels may span several addresses, using a third-party geocoder (eg <a href="https://www.mapbox.com/search/">Mapbox Places</a>) to identify a point for an address and then searching for the parcel at that poing can be more accurate than straight address search.</p>
+
+<p><strong>Request parameters:</strong></p>
+<ul>
+  <li><code class="highlighter-rouge">lat</code>: Latitude (y-coord) in decimal degrees, WGS84 (EPSG 4326) projection.</li>
+  <li><code class="highlighter-rouge">lon</code>: Longitude (x-coord), same.</li>
+</ul>
+
+<h3 id="by-address">By address</h3>
+
+<p><code class="highlighter-rouge">GET /api/v1/search.json?query=&lt;address&gt;&amp;context=&lt;path&gt;&amp;token=&lt;token&gt;</code></p>
+
+<p><strong>Request parameters:</strong></p>
+<ul>
+  <li><code class="highlighter-rouge">query</code>: The address to look up</li>
+  <li><code class="highlighter-rouge">context</code> (optional): See notes on <code class="highlighter-rouge">context</code> parameter above</li>
+  <li><code class="highlighter-rouge">strict</code> (optional): Set <code class="highlighter-rouge">strict=1</code> to only return results in the <code class="highlighter-rouge">context</code>.</li>
+</ul>
+
+<p><strong>Response:</strong>
+An array of parcels sorted by descending relevance rank. An empty results set with no error means no parcels could be matched.</p>
+
+<h3 id="by-parcel-number">By parcel number</h3>
+
+<p><code class="highlighter-rouge">GET /api/v1/search.json?parcelnumb=&lt;pin&gt;&amp;token=&lt;token&gt;</code></p>
+
+<p><strong>Request parameters:</strong></p>
+<ul>
+  <li><code class="highlighter-rouge">parcelnumb</code>: The assessor’s parcel number to look up.</li>
+  <li><code class="highlighter-rouge">context</code> (optional): To specify what county or municipality to search in, you can provide a path. See description above.</li>
+  <li><code class="highlighter-rouge">strict</code> (optional): Set <code class="highlighter-rouge">strict=1</code> to only return results in the <code class="highlighter-rouge">context</code>.</li>
+</ul>
+
+<h2 id="parcel-details">Parcel details</h2>
+
+<p><code class="highlighter-rouge">GET /api/v1/parcel.json?path=&lt;path&gt;&amp;token=&lt;token&gt;</code></p>
+
+<p><strong>Request parameters:</strong></p>
+<ul>
+  <li><code class="highlighter-rouge">path</code>: The canonical path of the parcel in the Loveland system. For example, <code class="highlighter-rouge">/us/mi/wayne/detroit/555</code>. See “Parcel Paths” above for more details.</li>
+</ul>
+
+<p><strong>Response:</strong>
+A single GeoJSON Feature for the requested parcel (rather than an array of results).</p>
+
+<h2 id="response-format">Response Format</h2>
+
+<p>All of these requests return a JSON response on success, an array of GeoJSON features representing the matched parcels. These include polygon geometries and <code class="highlighter-rouge">properties</code>. Our standard fields are documented in the <a href="https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424">Loveland Parcel Schema</a> (some additional undocumented fields may be included in the <code class="highlighter-rouge">properties</code>). An empty results set with no error means no parcels could be matched. Here’s an example response payload with results:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  results: [
+  	{
+      type: "Feature",
+      geometry: {
+        type: "Polygon",
+        coordinates: [[[-83.09659353074045, 42.30794044957642], [-83.09700166154633, 42.307778380507386], [-83.0970481624631, 42.30784446359719], [-83.09664127714791, 42.30800563738071], [-83.09659353074045, 42.30794044957642]]]
+      },
+      properties: {
+        headline: "250 Campbell",
+        path: "/us/mi/wayne/detroit/1000",
+        fields: {
+          address: "250 CAMPBELL",
+          parcelnumb: "16014174.",
+          owner: "LOVELAND, JACOB &amp; BIANCA",
+          zoning: "M4",
+          z_description: "Intensive Industrial District",
+          taxablesta: "TAXABLE",
+          cursev: 200,
+          ...
+        },
+        field_labels: {
+          address: "Address",
+          parcelnumb: "Parcel ID",
+          owner: "Owner",
+          zoning: "Zoning Code",
+          z_description: "Zoning",
+          taxablesta: "Taxable Status",
+          cursev: "State Equalized Value",
+          ...
+        },
+        context: {
+          headline: "Detroit, MI",
+          path: "/us/mi/wayne/detroit",
+          active: true
+        }
+      },
+      id: 1000
+    },
+    ...
+  ]
+}
+</code></pre></div></div>
+
+<p><strong>Notes on properties:</strong></p>
+<ul>
+  <li><code class="highlighter-rouge">headline</code>: a human-friendly display name for the parcel. If no address is available, it falls back to the parcel number.</li>
+  <li><code class="highlighter-rouge">path</code>: The parcel’s unique identifier as described above in “Place &amp; Parcel Paths”</li>
+  <li><code class="highlighter-rouge">fields</code>: Columns from the parcel table. These include <a href="https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424">standard column names</a> wherever fields are available, plus additional columns varying by the particular county &amp; data available.</li>
+  <li><code class="highlighter-rouge">field_labels</code>: Human-friendly labels for each key in <code class="highlighter-rouge">fields</code>.</li>
+  <li><code class="highlighter-rouge">context</code>: A bit of info about the city or county where this parcel is found, including a <code class="highlighter-rouge">path</code> one can use as <code class="highlighter-rouge">context</code> for further searches.</li>
+</ul>
+:ET

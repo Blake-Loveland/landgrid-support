@@ -1,0 +1,744 @@
+I"ºG<p>We clean and convert all parcel data we recieve into this standard schema. Some counties may include additional fields. Wherever possible, we include those in our exports, but we do not have a key available for those fields.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Datatype</th>
+      <th>Examples</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="code"><a name="ogc_fid">ogc_fid</a></td>
+      <td class="code">serial primary key</td>
+      <td></td>
+      <td>object ID</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="geoid">geoid</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>FIPS code</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="sourceagent">sourceagent</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Source Agent</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="parcelnumb">parcelnumb</a></td>
+      <td class="code">text</td>
+      <td>02004940, 001-020-4624-001</td>
+      <td>Parcel ID</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="usecode">usecode</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Parcel Use Code</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="usedesc">usedesc</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Parcel Use Description</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="zoning">zoning</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Zoning Code</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="zoning_description">zoning_description</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Zoning Description</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="struct">struct</a></td>
+      <td class="code">boolean</td>
+      <td></td>
+      <td>Structure On Parcel</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="multistruct">multistruct</a></td>
+      <td class="code">boolean</td>
+      <td></td>
+      <td>Multiple Structures on Parcel</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="structno">structno</a></td>
+      <td class="code">integer</td>
+      <td></td>
+      <td>Number of Structures on Parcel</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="yearbuilt">yearbuilt</a></td>
+      <td class="code">integer</td>
+      <td></td>
+      <td>Structure Year Built</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="numstories">numstories</a></td>
+      <td class="code">double precision</td>
+      <td></td>
+      <td>Number of Stories</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="numunits">numunits</a></td>
+      <td class="code">integer</td>
+      <td></td>
+      <td>Number of Units</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="structstyle">structstyle</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Structure Style</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="parvaltype">parvaltype</a></td>
+      <td class="code">text</td>
+      <td>Appraised, Assessed, Taxable, Market, Market Value</td>
+      <td>Parcel Value Type</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="improvval">improvval</a></td>
+      <td class="code">double precision</td>
+      <td></td>
+      <td>Improvement Value</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="landval">landval</a></td>
+      <td class="code">double precision</td>
+      <td></td>
+      <td>Land Value</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="parval">parval</a></td>
+      <td class="code">double precision</td>
+      <td></td>
+      <td>Total Parcel Value</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="agval">agval</a></td>
+      <td class="code">double precision</td>
+      <td></td>
+      <td>Agricultural Value</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="saleprice">saleprice</a></td>
+      <td class="code">double precision</td>
+      <td></td>
+      <td>Last Sale Price</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="saledate">saledate</a></td>
+      <td class="code">date</td>
+      <td></td>
+      <td>Last Sale Date</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="taxamt">taxamt</a></td>
+      <td class="code">double precision</td>
+      <td></td>
+      <td>Annual Tax Bill</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="owntype">owntype</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Type</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="owner">owner</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Name</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="ownfrst">ownfrst</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner First Name</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="ownlast">ownlast</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Last Name</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="owner2">owner2</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Second Owner Name</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="owner3">owner3</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Third Owner Name</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="owner4">owner4</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Fourth Owner Name</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="subsurfown">subsurfown</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Subsurface Owner</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="subowntype">subowntype</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Subsurface Owner Type</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mailadd">mailadd</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mail_address2">mail_address2</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address Second Line</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="careof">careof</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address Care Of</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mail_addno">mail_addno</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address Street Number</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mail_addpref">mail_addpref</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address Street Prefix</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mail_addstr">mail_addstr</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address Street Name</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mail_addsttyp">mail_addsttyp</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address Street Type</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mail_addstsuf">mail_addstsuf</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address Street Suffix</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mail_unit">mail_unit</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address Unit Number</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mail_city">mail_city</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address City</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mail_state2">mail_state2</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address State</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mail_zip">mail_zip</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Owner Mailing Address ZIP Code</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="mail_urbanization">mail_urbanization</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Mailing Address Urbanizacion (Puerto Rico)</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="address">address</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="address2">address2</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address Second Line</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="saddno">saddno</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address Number</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="saddpref">saddpref</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address Prefix</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="saddstr">saddstr</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address Street Name</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="saddsttyp">saddsttyp</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address Street Type</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="saddstsuf">saddstsuf</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address Street Suffix</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="sunit">sunit</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address Unit</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="scity">scity</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address City</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="original_address">original_address</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Original Address</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="city">city</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Census City</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="county">county</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address County</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="state2">state2</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address State</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="szip">szip</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Address Zip Code</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="urbanization">urbanization</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Site Urbanizacion</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="location_name">location_name</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Location Name</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="address_source">address_source</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Primary Address Source</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="legaldesc">legaldesc</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Legal Description</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="plat">plat</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Plat</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="book">book</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Book</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="page">page</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Page</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="block">block</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Block</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="lot">lot</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Lot</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="neighborhood">neighborhood</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Neighborhood</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="subdivision">subdivision</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Subdivision</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="qoz">qoz</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Federal Qualified Opportunity Zone</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="qoz_tract">qoz_tract</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Qualified Opportunity Zone 2018 Census Tract Number</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="census_tract">census_tract</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Census 2010 Tract</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="census_block">census_block</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Census 2010 Block</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="census_blockgroup">census_blockgroup</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Census 2010 Blockgroup</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="sourceref">sourceref</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Source Document Reference</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="sourcedate">sourcedate</a></td>
+      <td class="code">date</td>
+      <td></td>
+      <td>Source Document Date</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="sourceurl">sourceurl</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Source URL</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="recrdareatx">recrdareatx</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Recorded Area (text)</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="recrdareano">recrdareano</a></td>
+      <td class="code">double precision</td>
+      <td></td>
+      <td>Recorded Area (number)</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="gisacre">gisacre</a></td>
+      <td class="code">double precision</td>
+      <td></td>
+      <td>County-Provided Acres</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="sqft">sqft</a></td>
+      <td class="code">double precision</td>
+      <td></td>
+      <td>County-Provided Parcel Square Feet</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="ll_gisacre">ll_gisacre</a></td>
+      <td class="code">double precision</td>
+      <td></td>
+      <td>Loveland Calculated Parcel Acres</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="ll_gissqft">ll_gissqft</a></td>
+      <td class="code">integer</td>
+      <td></td>
+      <td>Loveland Calculated Parcel Square Feet</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="ll_bldg_footprint_sqft">ll_bldg_footprint_sqft</a></td>
+      <td class="code">integer</td>
+      <td></td>
+      <td>Loveland Calculated Building Footprint Square Feet</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="ll_bldg_count">ll_bldg_count</a></td>
+      <td class="code">integer</td>
+      <td></td>
+      <td>Loveland Calculated Building Count</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="reviseddate">reviseddate</a></td>
+      <td class="code">date</td>
+      <td></td>
+      <td>Date of Last Revision</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="path">path</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Parcel Path</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="ll_stable_id">ll_stable_id</a></td>
+      <td class="code">text</td>
+      <td>preserved (if unchanged)</td>
+      <td>Stable ID</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="ll_uuid">ll_uuid</a></td>
+      <td class="code">UUID</td>
+      <td></td>
+      <td>Version 4 UUID</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="ll_updated_at">ll_updated_at</a></td>
+      <td class="code">timestamp with time zone</td>
+      <td></td>
+      <td>Updated At</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="dpv_status">dpv_status</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>USPS Delivery Point Validation</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="dpv_codes">dpv_codes</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Delivery Point Validation Codes</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="dpv_notes">dpv_notes</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Delivery Point Validation Notes</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="dpv_type">dpv_type</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Delivery Point Match Type</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="cass_errorno">cass_errorno</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>CASS Certification Error Codes</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="rdi">rdi</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>Residential Delivery Indicator</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="usps_vacancy">usps_vacancy</a></td>
+      <td class="code">text</td>
+      <td></td>
+      <td>USPS Vacancy Indicator</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="usps_vacancy_date">usps_vacancy_date</a></td>
+      <td class="code">date</td>
+      <td></td>
+      <td>USPS Vacancy Indicator Date</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="lbcs_activity">lbcs_activity</a></td>
+      <td class="code">numeric</td>
+      <td></td>
+      <td>LBCS Activity Code</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="lbcs_function">lbcs_function</a></td>
+      <td class="code">numeric</td>
+      <td></td>
+      <td>LBCS Function Code</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="lbcs_structure">lbcs_structure</a></td>
+      <td class="code">numeric</td>
+      <td></td>
+      <td>LBCS Structure Code</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="lbcs_site">lbcs_site</a></td>
+      <td class="code">numeric</td>
+      <td></td>
+      <td>LBCS Site Code</td>
+    </tr>
+  
+    <tr>
+      <td class="code"><a name="lbcs_ownership">lbcs_ownership</a></td>
+      <td class="code">numeric</td>
+      <td></td>
+      <td>LBCS Ownership Code</td>
+    </tr>
+  
+  </tbody>
+</table>
+:ET

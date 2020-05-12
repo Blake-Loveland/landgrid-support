@@ -1,0 +1,14 @@
+I"�<p><em>This feature is only available with a Landgrid Pro, Team, or Enterprise account. <a href="https://landgrid.com/plans">Click here to upgrade your account</a>.</em></p>
+
+<p>On the toolbar in the upper left of the map, you’ll see an icon of a printer. Click this button, and two options appear:
+<img src="/img/Print.jpg" alt="Print.jpg" /></p>
+
+<p><strong>Print PDF Map:</strong> clicking this will prompt a popup where you can generate a PDF image of your Project - not only the map, but the legend, and (if selected) summary details of the project.</p>
+
+<p><strong>Save Image:</strong> a .PNG image will download of just the map extent as shown on your screen.</p>
+
+<p><strong>Print a Specific Parcel’s Info:</strong> You can print a specific properties’ information by clicking the parcel, then ‘Actions’ at the top right, then ‘Print Parcel’. The resulting PDF will look something like the following:
+<img src="/img/Print_Parcel_Details.jpg" alt="Print_Parcel_Details.jpg" /></p>
+
+<p>PS If you are looking for a way to share your Project with others digitally, you can <a href="https://support.landgrid.com/articles/share-a-map">check out this article</a> to learn how.</p>
+:ET

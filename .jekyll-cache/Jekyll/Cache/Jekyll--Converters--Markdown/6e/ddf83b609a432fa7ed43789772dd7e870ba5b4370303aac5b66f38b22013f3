@@ -1,0 +1,119 @@
+I"�	<p>In order to track down the bug you experienced in our error logs, we need to know a few key bits of info:</p>
+
+<p>1) The exact Date + Time the error last occurred.</p>
+
+<p><small>Example: 7/22 4:52pm</small></p>
+
+<p>2) Android Version Number</p>
+
+<p><small>Example: Android 9</small></p>
+
+<p>3) Model Number</p>
+
+<p><small>Example: XT1900-1</small></p>
+
+<p>4) Landgrid App Version Number</p>
+
+<p><small>Example: 1.14</small></p>
+
+<p><strong>Note that:</strong></p>
+
+<ul>
+  <li>The Model Number will never change, so you’ll only need to get it once if you can associate it with a single Surveyor or device.</li>
+  <li>The Android Version will change occasionally.</li>
+  <li>The Date+Time and Landgrid Version Number is needed for every bug.</li>
+  <li>Below is the process for getting the Android Version Number, the Model Number, and the Landgrid App Version Number.</li>
+</ul>
+
+<p><br /><br /></p>
+
+<hr />
+
+<p><br /><br /></p>
+
+<h3 id="get-android-version--model-number">Get Android Version + Model Number</h3>
+
+<p>1) Click on the <strong>Settings Icon</strong></p>
+
+<center>
+
+<img src="/img/settings.png" />
+<br /><br />
+
+</center>
+
+<p>2) Click <strong>System</strong> at the bottom of the Settings Panel.</p>
+
+<center>
+
+<img src="/img/model_1.jpeg" />
+<br /><br />
+
+</center>
+
+<p>3) Click <strong>About Phone</strong></p>
+
+<center>
+
+<img src="/img/model_2.jpeg" />
+<br /><br />
+
+</center>
+
+<p>4) Write down the <strong>Version Number</strong></p>
+
+<center>
+
+<img src="/img/model_3.jpeg" />
+<br /><br />
+
+</center>
+
+<p>5) Click <strong>Model &amp; Hardware</strong> which is also on on the About Phone screen.</p>
+
+<center>
+
+<img src="/img/model_4.jpeg" />
+<br /><br />
+
+</center>
+
+<p>6) Write down the <strong>Model Number</strong></p>
+
+<center>
+
+<img src="/img/model_5.jpeg" />
+
+</center>
+
+<p><br /><br /></p>
+
+<hr />
+
+<p><br /><br /></p>
+
+<h3 id="get-landgrid-app-version">Get Landgrid App Version</h3>
+
+<p>1) Open the Landgrid App and Log in.</p>
+
+<p>2) Navigate to Profile <img src="/img/profile_icon.png" /></p>
+
+<p>3) Write down the <strong>Landgrid Version Number</strong> at the bottom of the screen. Example: 1.15.0</p>
+
+<p><br /><br /></p>
+
+<hr />
+
+<p><br /><br /></p>
+
+<h3 id="submit-your-bug">Submit Your Bug</h3>
+
+<p>Here’s a template you can use to submit your bug.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>What Happened:
+Date and Time:
+Android Version Number:
+Model Number:
+Landgrid App Version Number:
+</code></pre></div></div>
+:ET
