@@ -2,26 +2,36 @@
 layout: default
 ---
 
-  <div class="sidenav">
-    {% include search.html %}
+<div class="sidenav">
+  {% include search.html %}
 
-    {% for category in site.category-list %}
-      <div class="category {% if page.category == category %}active{% endif %}">
-        <h2>{{category}}</h2>
-        <ul class="post-list">
-          {% assign articles = site.articles | where: 'category', category %}
-          {% assign articles = articles | sort: 'weight' %}
-          {% for article in articles %}
-            <li>
-                <a class="post-link" href="{{ site.baseurl }}{{ article.url | prepend: article.baseurl }}">{{ article.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endfor %}
-  </div>
+  {% for category in site.category-list %}
+    <div class="category {% if page.category == category %}active{% endif %}">
+      <h2>{{category}}</h2>
+      <ul class="post-list">
+        {% assign articles = site.articles | where: 'category', category %}
+        {% assign articles = articles | sort: 'weight' %}
+        {% for article in articles %}
+          <li>
+              <a class="post-link" href="{{ site.baseurl }}{{ article.url | prepend: article.baseurl }}">{{ article.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</div>
 
 <main>
   <h2>{{ page.title }}</h2>
   {{ content }}
 </main>
+
+<div class="pagenav">
+  <h4>On this page</h4>
+  <ul>
+    <li><a href="#">Basics</a></li>
+    <li><a href="#">Parcel search</a></li>
+    <li><a href="#">Parcel details</a></li>
+    <li><a href="#">Response format</a></li>
+  </ul>
+</div>
