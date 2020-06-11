@@ -143,11 +143,13 @@ key.
 
 A layer definition has:
 
-- A fixed query to select parcel data
-- Optionally, a string of cartocss styles (see "composing styles" below). We apply
-  the default Loveland styles if you don't specify any.
+- `query`: Set to `parcels: true` to select parcel data
+- `fields`: An optional list of [standard schema columns](/articles/schema) to include. By default, tiles include `address`, `owner`, and `path`
+- `styles`: Optional, A string of [CartoCSS styles](https://carto.com/developers/styling/cartocss/) (see "composing styles" below). We apply a set of default Loveland styles if you don't specify any.
 
 #### Sample layer request
+
+This layer requests parcels with a custom line color and additional fields:
 
 ```
 POST /api/v1/sources?token=
@@ -155,6 +157,9 @@ POST /api/v1/sources?token=
   query: {
     parcels: true
   },
+  fields: {
+    parcel: ['usecode', 'usedesc', 'parval', 'landval']
+  }
   styles: 'Map{} #loveland { line-color: #69387a; }'
 }
 ```
