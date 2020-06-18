@@ -21,17 +21,13 @@ layout: default
   {% endfor %}
 </div>
 
-<main>
+<main id="main">
   <h2>{{ page.title }}</h2>
   {{ content }}
 </main>
 
-<div class="pagenav">
-  <h4>On this page</h4>
-  <ul>
-    <li><a href="#">Basics</a></li>
-    <li><a href="#">Parcel search</a></li>
-    <li><a href="#">Parcel details</a></li>
-    <li><a href="#">Response format</a></li>
-  </ul>
+<div class="sidebar">
+  <div class="toc">
+    {% include toc.html html=content %}
+  </div>
 </div>

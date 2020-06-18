@@ -5,7 +5,7 @@ published: true
 intro: How developers can plug in to the Loveland parcel API
 title: Using the API
 ---
-#### Basics
+### Basics
 
 Thank you for your interest in our Parcel API! This tool is now out of beta, so please direct feedback, bugs and questions to **help@landgrid.com**. To begin with, all requests will be to the `https://landgrid.com` domain, with the paths described below per-request.
 
@@ -24,9 +24,9 @@ At Loveland we use place *pathnames* to specify administrative boundaries and un
 *Parcel paths* are similar, and include an integer ID at the end. For example, `/us/mi/wayne/detroit/555`. These uniquely identify a parcel in our database in a simple, human-readable format.
 
 
-## Parcel search
+### Parcel search
 
-### By lat-long (reverse geocoding)
+#### By lat-long (reverse geocoding)
 
 `GET /api/v1/search.json?lat=<y>&lon=<x>&token=<token>`
 
@@ -36,7 +36,7 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 * `lat`: Latitude (y-coord) in decimal degrees, WGS84 (EPSG 4326) projection.
 * `lon`: Longitude (x-coord), same.
 
-### By address
+#### By address
 
 `GET /api/v1/search.json?query=<address>&context=<path>&token=<token>`
 
@@ -48,7 +48,7 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 **Response:**
 An array of parcels sorted by descending relevance rank. An empty results set with no error means no parcels could be matched.
 
-### By parcel number
+#### By parcel number
 
 `GET /api/v1/search.json?parcelnumb=<pin>&token=<token>`
 
@@ -57,7 +57,7 @@ An array of parcels sorted by descending relevance rank. An empty results set wi
 * `context` (optional): To specify what county or municipality to search in, you can provide a path. See description above.
 * `strict` (optional): Set `strict=1` to only return results in the `context`.
 
-## Parcel details
+### Parcel details
 
 `GET /api/v1/parcel.json?path=<path>&token=<token>`
 
@@ -67,7 +67,7 @@ An array of parcels sorted by descending relevance rank. An empty results set wi
 **Response:**
 A single GeoJSON Feature for the requested parcel (rather than an array of results).
 
-## Response Format
+### Response Format
 
 All of these requests return a JSON response on success, an array of GeoJSON features representing the matched parcels. These include polygon geometries and `properties`. Our standard fields are documented in the [Loveland Parcel Schema](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424) (some additional undocumented fields may be included in the `properties`). An empty results set with no error means no parcels could be matched. Here's an example response payload with results:
 

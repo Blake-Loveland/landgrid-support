@@ -51,7 +51,6 @@ body {
   display: flex;
   flex: 1;
   height: 100vh;
-  width: 100vw;
   min-height: 100%;
   flex-direction: column;
 }
@@ -59,9 +58,8 @@ body {
 #content {
   display: flex;
   flex: 1;
-  margin-bottom: 50px;
 
-  a, a:hover {
+  a:hover {
     text-decoration: underline;
   }
 }
@@ -275,8 +273,7 @@ header {
 .sidenav {
   max-width: 300px;
   background: $land;
-  padding: 2.5rem;
-  margin-right: 3rem;
+  padding: $pad;
 
   h2 {
     font: $base-font-weight #{$base-font-size}/#{$base-line-height}
@@ -295,7 +292,11 @@ header {
     // animation-fill-mode: both;
   }
 
-  a, a:hover { 
+  a { 
+    text-decoration: none;
+  }
+
+  a:hover { 
     text-decoration: underline;
   }
 
@@ -356,34 +357,83 @@ header {
 
 main {
   flex: 1;
-  padding-top: 3rem; 
   max-width: 70rem;
+  padding: $pad * 2;
+
+  h3, h4, h5, h6 { 
+    margin-top: 2em;
+    position: relative;
+  }
+
+  h2 + h3,
+  h3 + h4 { 
+    margin-top: 0;
+  }
+
+  a, a:hover {
+    text-decoration: underline;
+  }
+    
+  .header-link {
+    position: absolute;
+    left: -1em;
+    opacity: 0;
+    text-decoration: none;
+    font-weight: normal;
+  }
+  
+  h2:hover .header-link,
+  h3:hover .header-link,
+  h4:hover .header-link,
+  h5:hover .header-link,
+  h6:hover .header-link {
+    opacity: 1;
+  }
+
 }
 
-.pagenav {
-  margin-left: 3rem;
-  padding-top: 3rem;
-}
+.sidebar {
+  flex: 0 0 300px;
+  padding-top: $pad;
 
-.post-list a {
-  color: $link-color;
-}
+  // Table of contents 
+  .toc {
+    padding: $pad;
+    position: sticky;
+    top: 0;    
 
-ul.post-list,
-.post-list li {
-  list-style: none;
-  text-indent: 0;
-  padding: 0;
+    ul, li { 
+      list-style: none;
+      font-size: $small-font-size;
+      margin: 0;
+      padding: 0;
+    }
+
+    li { 
+      margin-bottom: 1em;
+    }
+
+    li ul { 
+      padding-left: $pad/2;
+      margin-top: 1em;
+      //border-left: 4px solid $land;
+    }
+
+  }
+}
+// This is the side nav
+.post-list {
   margin: 0;
-  line-height: 1.1;
-}
 
-ul.post-list {
-  margin-bottom: 2em;
-}
+  li {
+    font-size: $small-font-size;
 
-.post-list li {
-  margin-bottom: 1em;
+    list-style: none;
+    text-indent: 0;
+    padding: 0;
+    margin: 0 0 1.5em $pad / 2;
+    line-height: 1.1;
+  }
 }
 
 footer {

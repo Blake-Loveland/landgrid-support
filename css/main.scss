@@ -14,6 +14,7 @@ $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
 $spacing-unit:     30px;
+$pad:              3rem;
 
 $text-color:       #34474c;
 $background-color: #fdfdfd;
@@ -23,6 +24,7 @@ $eggplant-dark-t:  hsla(304.3, 20%, 40%, 0.9);
 
 $ll:               $eggplant;
 $link-color:       #1f628c;
+$subtle-link-color:       #1f628c;
 
 $land: hsl(29, 71%, 95%); // #faede1 -- this is the map's land color
 $land-dark: hsl(29, 71%, 80%); 

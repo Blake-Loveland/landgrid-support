@@ -5,7 +5,7 @@ published: true
 title: FAQs - Parcel Data
 ---
 
-## Frequently Asked Questions (FAQ) About Landgrid Parcel Data
+### Landgrid Parcel Data
 
 **Where does your County data come from?**
 
@@ -118,7 +118,7 @@ for /R %G in (*.gpkg) do ogr2ogr -progress -f "MSSQLSpatial" "MSSQL:server=local
 
 The main item of the command line options are the database connection options. You will have to make sure the user name and password are available and that the client can actually connect to the database and has all the needed permissions. For PostgreSQL on GNU/Linux, there are standard PG_* environmental variables and the .pgpass file for storing credentials that will work with the ogr2ogr commands so they do not have to be included in the command line.
 
-## Building Data
+### Building Data
 
 **How do you determine the Loveland Building Count value (`ll_bldg_count`)?**
 
@@ -137,7 +137,7 @@ Please contact us at help@landgrid.com if you find issues, or have any questions
 
 We projected each parcel and building footprint into its UTM Zone SRS, calculated the area in meters and converted that to acres and sqft. This should provide a relatively uniform and consistent value across the US.
 
-## API Access
+### API Access
 
 **What is an API and why might I use one?**
 
@@ -164,7 +164,7 @@ Windows users can use [WinSCP](https://winscp.net/), which also supports [script
 MacOS users can use [CyberDuck](https://cyberduck.io/)
 
 
-## LBCS - Usecode Classification
+### LBCS - Usecode Classification
 
 **What is LBCS?**
 
