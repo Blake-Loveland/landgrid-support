@@ -7,7 +7,11 @@ title: Using the API
 ---
 #### Basics
 
-Thank you for your interest in our Parcel API! This tool is now out of beta, so please direct feedback, bugs and questions to **help@landgrid.com**. To begin with, all requests will be to the `https://landgrid.com` domain, with the paths described below per-request.
+Thank you for your interest in our Parcel API! This tool is now out of beta, so please direct feedback, bugs and questions to **help@landgrid.com**.
+
+All requests will be to the `https://landgrid.com` domain, with the paths described below per-request.
+
+The only way to get parcel data from the API is via `/api/v1/search.json` and searching by point (lat/lon), Parcel Number, or Parcel Street Address.
 
 #### Authentication and tokens
 
@@ -64,6 +68,15 @@ An array of parcels sorted by descending relevance rank. An empty results set wi
 * `strict` (optional): Set `strict=1` to only return results in the `context`.
 
 ### By owner name
+
+*This is an alpha search method and will change before release*
+
+Currently only matchest based on the start of the name string
+
+Target: "Jones, Festus"
+
+Matches: 'jone', 'jones'
+Will not match: 'fest', 'festus', etc
 
 `GET /api/v1/search.json?owner=<name>&context=<path>&token=<token>`
 
@@ -137,7 +150,7 @@ All of these requests return a JSON response on success, an array of GeoJSON fea
   * `context`: A bit of info about the city or county where this parcel is found, including a `path` one can use as `context` for further searches.
 
 
-## Reports
+## Reporting data issues
 
 *This is an alpha endpoint and may change before release*
 
