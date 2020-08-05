@@ -42,6 +42,7 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 
 **To search all parcels in a radius of a point:**
 * `nearest`: Pass `1` to return parcels within a radius instead of an exact match at the lat-long.
+* `limit` (optional): Maximum number of results to return.
 * `radius` (optional): Give a radius in meters to search within. Default 50, maximum 500
 
 `GET /api/v1/search.json?lat=<y>&lon=<x>&nearest=1&radius=<meters>&token=<token>`
@@ -53,6 +54,7 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 **Request parameters:**
 * `query`: The address to look up
 * `context` (optional): See notes on `context` parameter above
+* `limit` (optional): Maximum number of results to return.
 * `strict` (optional): Set `strict=1` to only return results in the `context`.
 
 **Response:**
@@ -65,6 +67,7 @@ An array of parcels sorted by descending relevance rank. An empty results set wi
 **Request parameters:**
 * `parcelnumb`: The assessor's parcel number to look up.
 * `context` (optional): To specify what county or municipality to search in, you can provide a path. See description above.
+* `limit` (optional): Maximum number of results to return.
 * `strict` (optional): Set `strict=1` to only return results in the `context`.
 
 ### By owner name
@@ -83,7 +86,7 @@ Will not match: 'fest', 'festus', etc
 **Request parameters:**
 * `owner`: The owner name in "Last, First" format. Also matches by prefix, ie. you can pass just a last name to get any name beginning with that string. (Case insensitive, minimum 4 characters)
 * `context` (optional): To specify what county or municipality to search in, you can provide a path. See description above.
-
+* `limit` (optional): Maximum number of results to return.
 
 ## Parcel details
 
@@ -97,7 +100,7 @@ A single GeoJSON Feature for the requested parcel (rather than an array of resul
 
 ## Response Format
 
-All of these requests return a JSON response on success, an array of GeoJSON features representing the matched parcels. These include polygon geometries and `properties`. Our standard fields are documented in the [Loveland Parcel Schema](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424) (some additional undocumented fields may be included in the `properties`). An empty results set with no error means no parcels could be matched. Here's an example response payload with results:
+All of these requests return a JSON response on success, an array of GeoJSON features representing the matched parcels. These include polygon geometries and `properties`. Our standard fields are documented in the [Loveland Parcel Schema](/articles/schema) (some additional undocumented fields may be included in the `properties`). An empty results set with no error means no parcels could be matched. Here's an example response payload with results:
 
     {
       results: [
@@ -148,6 +151,13 @@ All of these requests return a JSON response on success, an array of GeoJSON fea
   * `fields`: Columns from the parcel table. These include [standard column names](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424) wherever fields are available, plus additional columns varying by the particular county & data available.
   * `field_labels`: Human-friendly labels for each key in `fields`.
   * `context`: A bit of info about the city or county where this parcel is found, including a `path` one can use as `context` for further searches.
+
+## Schema
+
+`GET /api/v1/schema.json`
+
+**Response:**
+A hash with details on all fields in the [Loveland Parcel Schema](/articles/schema)
 
 
 ## Reporting data issues
