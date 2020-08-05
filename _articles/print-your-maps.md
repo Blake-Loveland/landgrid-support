@@ -17,6 +17,6 @@ On the toolbar in the upper left of the map, you'll see an icon of a printer. Cl
 
 **Print a Specific Parcel's Info:** You can print a specific properties' information by clicking the parcel, then 'Actions' at the top right, then 'Print Parcel'. The resulting PDF will look something like the following:
 ![Print_Parcel_Details.jpg]({{site.baseurl}}/img/Print_Parcel_Details.jpg)
-
+NOTE: this feature is only available to Team accounts and above.
 
 PS If you are looking for a way to share your Project with others digitally, you can [check out this article](https://support.landgrid.com/articles/share-a-map) to learn how.

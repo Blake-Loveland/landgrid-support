@@ -65,7 +65,7 @@ A detailed listing of every County in the US and the date we last refreshed dire
 
 **How do you provide data updates?**
 
-All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoPKG, CSV, GeoJSON, etc), using a pull model. We organize things on a county by county basis using the county's FIPS code (`geoid` in our standard schema columns). We add or refresh 20-300 counties every month with data from the county source.
+All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county's FIPS code (`geoid` in our standard schema columns). We add or refresh 20-300 counties every month with data from the county source.
 
 Each month we replace the existing county zip file in a client's download directory with the refreshed county files.
 
@@ -75,7 +75,23 @@ We also provide a CSV file of our VERSE table that lists the `last_refresh` date
 
 On each parcel we provide a `'ll_uuid` number that permanently and uniquely identifies each parcel across data refreshes and updates. The `ll_uuid` can be used to match any locally stored parcels with updated parcels in the county file.
 
-We also make improvements to the data that does not come directly from the county, like standardizing addresses, cleaning out non-standard characters, adding additional data attributes, etc. We generally re-export our full dataset quarterly to reflect those changes. Improvements we make to data does NOT affect the `last_refresh` of a county, that is always the date we last pulled data directly from the source. Notices of full dataset exports are also included in the monthly email update sent to all clients.
+We also make improvements to the data that does not come directly from the county, like standardizing addresses, cleaning out non-standard characters, adding additional data attributes, etc. We generally re-export our full dataset quarterly to reflect those changes. Improvements we make to data does NOT affect the `last_refresh` of a county, that is always the date we last pulled data directly from the county source. Notices of full dataset exports are also included in the monthly email update sent to all clients.
+
+**How do I keep my data up-to-date?**
+
+We provide our `verse` tracking table as a csv updated monthly. It has every county in the US's state, county name, state+county fips (we call `geoid`), date we last pulled directly from the source (`last_refresh` column), and a `filename_stem` column that indicates the file name with no format .extension or .zip, just the basename of the file. Note: null in our verse `table_name` column means the county is not in our dataset.
+
+
+Everyone's stack and environment are different, but generally we think the outline of steps is as follows:
+
+1. Pull a copy of our `verse` table from our SFTP server
+2. Use the `last_refresh` date in our `verse` table to determine which county or counties you need to update
+3. Use the `filename_stem` field in our `verse` table to pull the needed county or counties via SFTP from our server
+4. Once you have the file(s) locally, import it/them into a database (we use PostgreSQL/PostGIS, GDAL and ogr2ogr for this last step internally)
+
+We do not track changes at any level below the county level, but with our `ll_uuid` it should be possible to determine if you need to update a row in your database if you do not want to replace the whole county.
+
+That same `ll_uuid` should be used  if you need a permanent, nationwide unique id for a parcel, and to match up with data you might attach to our parcel data in your usage.
 
 
 **How do you standardize and normalize addresses?**
@@ -118,11 +134,24 @@ for /R %G in (*.gpkg) do ogr2ogr -progress -f "MSSQLSpatial" "MSSQL:server=local
 
 The main item of the command line options are the database connection options. You will have to make sure the user name and password are available and that the client can actually connect to the database and has all the needed permissions. For PostgreSQL on GNU/Linux, there are standard PG_* environmental variables and the .pgpass file for storing credentials that will work with the ogr2ogr commands so they do not have to be included in the command line.
 
-### Building Data
+**Why do some Shapefiles say '2GB_WARN' in the file name?**
+
+The shapefile format itself has a 'soft limit' of 2 gigabytes (GB) data. That means it is just a rule of the format "no data larger than 2GB" with no technical limit preventing more data being encoded as a shapefile. When we export large counties, our tools inform us the resulting shapefile is over that soft limit.
+
+We can confirm that some software handles 2GB and larger shapefiles just fine (OSGeo tools), but some software will just silently ignore attribute data above the 2GB limit (ArcGIS). A sincere  thank you to the Loveland client who did a lot of in depth research and testing on this and shared their results with all of us.
+
+Starting in July 2020 we made the following changes to help flag the counties who's data exceeds the 2GB soft limit. Please double check how you are handling these files.
+
+1. The filenames themselves will indicate the county generated the 2GB warning on export. '2GB_WARN' will be added to the file names so you can know just by checking the name.
+1. We added a column to our 'verse' table, named 'shapefile_size_flag' so you can check against the 'verse' table to see if a place is one that needs a different format than shapefile or generate a list of places you need to pull the alternate format for.
+
+
+
+## Building Data
 
 **How do you determine the Loveland Building Count value (`ll_bldg_count`)?**
 
-We work with [Gateway Spatial](https://gatewayspatial.com/sample-page/), a data firm that collects and curates building footprint data sets directly from counties in the US. They provide one of the most comprehensive, authoritative building footprint nationwide layers available. 
+We work with a 3rd pary data firm that collects and curates building footprint data sets directly from counties in the US. They provide one of the most comprehensive, authoritative building footprint nationwide layers available. 
 
 We then process that footprint data set with our parcel shapes data set to determine how many buildings are on the parcel.
 

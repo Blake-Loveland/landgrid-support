@@ -3,7 +3,7 @@ weight: 4
 category: Getting Started
 published: true
 intro: Change basemaps in landgrid.com by using "Layers" dropdown
-title: Untitled
+title: Using Basemaps
 ---
 Landgrid.com curates an ever-growing number of basemaps. To change your basemap, select "Layers" from the dropdown on the bar at the top of your screen.
 

@@ -7,7 +7,11 @@ title: Using the API
 ---
 ### Basics
 
-Thank you for your interest in our Parcel API! This tool is now out of beta, so please direct feedback, bugs and questions to **help@landgrid.com**. To begin with, all requests will be to the `https://landgrid.com` domain, with the paths described below per-request.
+Thank you for your interest in our Parcel API! This tool is now out of beta, so please direct feedback, bugs and questions to **help@landgrid.com**.
+
+All requests will be to the `https://landgrid.com` domain, with the paths described below per-request.
+
+The only way to get parcel data from the API is via `/api/v1/search.json` and searching by point (lat/lon), Parcel Number, or Parcel Street Address.
 
 #### Authentication and tokens
 
@@ -36,13 +40,21 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 * `lat`: Latitude (y-coord) in decimal degrees, WGS84 (EPSG 4326) projection.
 * `lon`: Longitude (x-coord), same.
 
-#### By address
+**To search all parcels in a radius of a point:**
+* `nearest`: Pass `1` to return parcels within a radius instead of an exact match at the lat-long.
+* `limit` (optional): Maximum number of results to return.
+* `radius` (optional): Give a radius in meters to search within. Default 50, maximum 500
+
+`GET /api/v1/search.json?lat=<y>&lon=<x>&nearest=1&radius=<meters>&token=<token>`
+
+### By address
 
 `GET /api/v1/search.json?query=<address>&context=<path>&token=<token>`
 
 **Request parameters:**
 * `query`: The address to look up
 * `context` (optional): See notes on `context` parameter above
+* `limit` (optional): Maximum number of results to return.
 * `strict` (optional): Set `strict=1` to only return results in the `context`.
 
 **Response:**
@@ -55,9 +67,28 @@ An array of parcels sorted by descending relevance rank. An empty results set wi
 **Request parameters:**
 * `parcelnumb`: The assessor's parcel number to look up.
 * `context` (optional): To specify what county or municipality to search in, you can provide a path. See description above.
+* `limit` (optional): Maximum number of results to return.
 * `strict` (optional): Set `strict=1` to only return results in the `context`.
 
-### Parcel details
+### By owner name
+
+*This is an alpha search method and will change before release*
+
+Currently only matchest based on the start of the name string
+
+Target: "Jones, Festus"
+
+Matches: 'jone', 'jones'
+Will not match: 'fest', 'festus', etc
+
+`GET /api/v1/search.json?owner=<name>&context=<path>&token=<token>`
+
+**Request parameters:**
+* `owner`: The owner name in "Last, First" format. Also matches by prefix, ie. you can pass just a last name to get any name beginning with that string. (Case insensitive, minimum 4 characters)
+* `context` (optional): To specify what county or municipality to search in, you can provide a path. See description above.
+* `limit` (optional): Maximum number of results to return.
+
+## Parcel details
 
 `GET /api/v1/parcel.json?path=<path>&token=<token>`
 
@@ -69,7 +100,7 @@ A single GeoJSON Feature for the requested parcel (rather than an array of resul
 
 ### Response Format
 
-All of these requests return a JSON response on success, an array of GeoJSON features representing the matched parcels. These include polygon geometries and `properties`. Our standard fields are documented in the [Loveland Parcel Schema](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424) (some additional undocumented fields may be included in the `properties`). An empty results set with no error means no parcels could be matched. Here's an example response payload with results:
+All of these requests return a JSON response on success, an array of GeoJSON features representing the matched parcels. These include polygon geometries and `properties`. Our standard fields are documented in the [Loveland Parcel Schema](/articles/schema) (some additional undocumented fields may be included in the `properties`). An empty results set with no error means no parcels could be matched. Here's an example response payload with results:
 
     {
       results: [
@@ -120,3 +151,46 @@ All of these requests return a JSON response on success, an array of GeoJSON fea
   * `fields`: Columns from the parcel table. These include [standard column names](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424) wherever fields are available, plus additional columns varying by the particular county & data available.
   * `field_labels`: Human-friendly labels for each key in `fields`.
   * `context`: A bit of info about the city or county where this parcel is found, including a `path` one can use as `context` for further searches.
+
+## Schema
+
+`GET /api/v1/schema.json`
+
+**Response:**
+A hash with details on all fields in the [Loveland Parcel Schema](/articles/schema)
+
+
+## Reporting data issues
+
+*This is an alpha endpoint and may change before release*
+
+You can report issues with specific parcels or general areas to us using 
+this report endpoint. Reports help us prioritize updates. However, we 
+cannot apply data received to this endpoint directly to our parcel data or 
+respond individually to specific reports. 
+
+`POST /api/v1/report.json?token=<token>`
+
+**Request parameters:**
+* `path`: A path to a specific parcel or place
+* `ll_uuid` (optional): The ll_uuid of a parcel, if the report is for a specific parcel
+* `comment` (optional): String describing the issue
+* `details` (optional): A hash with details on specific fields. This hash only accepts [standard column names](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424) as keys.
+
+**Response:**
+A success message plus the `id` of the new report. 
+
+**Example request:**
+
+```
+POST https://landgrid.com/api/v1/report.json?token=YOUR_TOKEN_HERE
+{
+  "path": "/us/al/elmore/eclectic/5",
+  "ll_uuid": "8ba95684-e001-4362-801c-39f30a13bee4",
+  "comment": "Property has a new owner",
+  "details": {
+    "owner": "Johnny Parcel",
+    "saleprice": 200000
+  }
+}
+```
