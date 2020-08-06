@@ -1,6 +1,6 @@
 ---
 weight: 0
-category: Getting Started
+category: Landgrid Data
 published: true
 title: The Loveland Parcel Schema
 permalink: /articles/schema

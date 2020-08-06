@@ -74,3 +74,12 @@ the prose config at the bottom of the file.
 ## Updating the schema 
 
 The schema lives at `_data/schema.yml`
+
+# Redesign todos: 
+- X Schema page
+- Code wrapping 
+- Mobile
+- X Homepage
+- X Make top navigation easier 
+- X Caret for menus
+- X Paras in footer

@@ -15,7 +15,7 @@ url: "https://support.landgrid.com" # the base hostname & protocol for your site
 twitter_username: makeloveland
 facebook_username: makeloveland
 # github_username:  loveland
-category-list: [Getting Started, Maps, Your Account, Adding Data, Managing Data, Surveying]
+category-list: [Getting Started, Landgrid Data, Maps, Your Account, Adding Data, Managing Data, Surveying]
 
 # We're treating pages in a special way
 # See https://jekyllrb.com/docs/collections/
@@ -61,6 +61,8 @@ prose:
           options:
             - name: "Getting Started"
               value: "Getting Started"
+            - name: "Landgrid Data"
+              value: "Landgrid Data"
             - name: "Projects"
               value: "Projects"
             - name: "Your Account"
