@@ -26,7 +26,7 @@ Landgrid provides a styleable, seamless, nationwide layer of parcel outlines in 
 
 #### TileJSON
 
-We serve [TileJSON](https://www.mapbox.com/help/define-tilejson/)-formatted metadata for generic parcel tiles which is used to get the full url to either our raster or vector tiles:
+We serve [TileJSON](https://www.mapbox.com/help/define-tilejson/)-formatted metadata for generic parcel tiles which is used to get the full url to either our raster or vector tile layers:
 
 * Raster tiles: `/api/v1/parcels`
 * Vector tiles: `/api/v1/parcels?format=mvt`
@@ -137,11 +137,15 @@ You literally leave those `level`, `col`, and `row` words in there instead of th
 AGSWebTiledLayer(urlTemplate: "https://tiles.makeloveland.com/api/v1/parcels/{level}/{col}/{row}.png?token=
 ```
 
+#### ArcGIS Desktop note
+
+ArcGIS Desktop products only support Esri based vector tile layers. However, ArcGIS Desktop users can also use our raster tiles for integrations.
+
 ### Custom layers
 
-Use a Layer to get tiles with custom styles and data.
+You can create a custom Layer to get tiles with custom styles and data returned.
 
-A Layer defines the set of data and, for raster tiles, styles that you get in a tile. Each layer has a unique ID. Each unqiue set of styles, fields, and queries defines new layer -- you cannot edit existing layers.
+A Layer defines the set of data and, for raster tiles, styles, that you get in a tile. Each layer has a unique ID. Each unqiue set of styles, fields, and queries defines new layer -- you cannot edit existing layers, just create a new one.
 
 #### How to create a custom layer
 
