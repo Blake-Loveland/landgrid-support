@@ -1,6 +1,6 @@
 ---
 weight: 1
-category: Developer Notes
+category: Data and API
 published: true
 intro: How developers can use the Loveland tileserver
 title: Using the Tileserver
