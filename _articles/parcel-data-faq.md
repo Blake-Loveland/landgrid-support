@@ -17,23 +17,23 @@ Available County data means that we have confirmed the data is available from th
 
 **Do you have "this" attribute for "this" County?**
 
-A current, detailed list of every County in the US and what data fields we have for each is always available at the following URL. This spreadsheet can be downloaded as a CSV for closer analysis:  [https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/](https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/)
+A current, detailed list of every County in our data set and what data fields we have for each is always available at the following URL. This spreadsheet can be downloaded as a CSV for closer analysis:  [https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/](https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/)
 
 **How do you standardize County data generally?**
 
-The main way we make county data much easier to work with is by standardizing the column names of the raw data provided by each county. We do not standardize the values in most columns, most we keep those exactly as provided by the county, but we do make sure that every county in our system is converted to a standard table schema, with consistent column names across the nationwide dataset. Please see “What is the Landgrid Standard Schema?” question below.
+The main way we make county data much easier to work with is by standardizing the column names of the raw data provided by each county. We do not standardize the values in most columns, most we keep those exactly as provided by the county, but we do make sure that every county in our system is converted to a standard table schema, with consistent column names across the nationwide dataset. Please see “What is the Loveland Landgrid Parcel Schema?” question below.
 
 In addition, we further standardize the parcel address fields using the US Postal Service database of addresses. For details on address specific standardization please see the "How do you standardize and normalize addresses?" question below. 
 
-**What is the Landgrid Standard Schema?**
+**What is the Loveland Landgrid Parcel Schema?**
 
-We standardize column names for easy access across counties in our nationwide dataset in to our Standard Schema for tables.
+We standardize column names for easy access across counties in our nationwide dataset in to our Loveland Landgrid Parcel Schema for tables.
 
-We are currently at version 5 of our Standard Schema and it standardizes the column names for approximately 80 county provided data columns, and 25 Landgrid provided data columns. This schema is applied to 100% of our dataset. A data dictionary is available: [https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424)
+We are currently at version 6 of our Loveland Landgrid Parcel Schema and it standardizes the column names for approximately 80 county provided data columns, and 25 Landgrid provided data columns. This schema is applied to 100% of our dataset. A data dictionary is available: [https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424)
 
-**Why do my files have columns not in the Landgrid Standard Schema?**
+**Why do my files have columns not in the Loveland Landgrid Parcel Schema?**
 
-Every county has our standard schema columns, so any code or process can rely on those columns (also called attributes in GIS software) being present. However, most counties also provide attributes that do not map in to one of our standard schema columns, so we keep those attributes and include them on the end of our standard schema columns using whatever name is provided by the county. In many tools you can control what attributes are retained during import or merging, so we suggest folks working across multiple counties just keep the standard schema columns or a sub set of them and leave what we call "custom columns" off entirely to get a uniform set of columns. Going back and reviewing those custom columns can reveal interesting information provided by the counties, but not provided very often in other counties.
+Every county has our schema columns, so any code or process can rely on those columns (also called attributes in GIS software) being present. However, most counties also provide attributes that do not map in to one of our Loveland Landgrid Parcel Schema columns, so we keep those attributes and include them on the end of our schema columns using whatever name is provided by the county. In many tools you can control what attributes are retained during import or merging, so we suggest folks working across multiple counties just keep the schema columns or a sub set of them and leave what we call "custom columns" off entirely to get a uniform set of columns. Going back and reviewing those custom columns can reveal interesting information provided by the counties, but not provided very often in other counties.
 
 **How can I explore the custom columns for each county?**
 
@@ -48,9 +48,9 @@ order BY table_name, column_name;
 
 Also, directly browsing the data on a place-by-place process of areas or regions you are interested in can be very useful. [DBeaver](https://dbeaver.io/) is a cross platform, multi vendor database client that can render geographic data.
 
-**Why do Shapefile attribute names not match the Landgrid Standard Schema column names?**
+**Why do Shapefile attribute names not match the Loveland Landgrid Parcel Schema column names?**
 
-Some of our standard schema column names are longer than the Esri Shapefile format allows and the column names in your attribute table will be truncated to the first 10 characters of the Landgrid Standard Schema column names.
+Some of our Loveland Landgrid Parcel Schema column names are longer than the Esri Shapefile format allows and the column names in your attribute table will be truncated to the first 10 characters of the Loveland Landgrid Parcel Schema column names.
 
 
 **When was your data last updated?**
@@ -61,11 +61,11 @@ We make every effort to update our data at least yearly, with major metro areas 
 
 All data is tracked with the date of “last refresh” from the County. 
 
-A detailed listing of every County in the US and the date we last refreshed directly from the County is always available. This spreadsheet can be downloaded as a CSV for closer analysis: [https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/](https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/)
+A detailed listing of every County in our data set and the date we last refreshed directly from the County is always available. This spreadsheet can be downloaded as a CSV for closer analysis: [https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/](https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/)
 
 **How do you provide data updates?**
 
-All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county's FIPS code (`geoid` in our standard schema columns). We add or refresh 20-300 counties every month with data from the county source.
+All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county's FIPS code (`geoid` in our Loveland Landgrid Parcel Schema column). We add or refresh 20-300 counties every month with data from the county source.
 
 Each month we replace the existing county zip file in a client's download directory with the refreshed county files.
 
@@ -118,7 +118,7 @@ do echo "$gdb" ;
 done
 ~~~~
 
-Dealing with custom columns at scale is best accomplished by ignoring them during import. One approach is to use the `-sql` option with `ogr2ogr` to restrict what columns you load to all of, or a sub-set of, the columns in our standard schema. We use this same method for exporting and it causes one thing to watch out for: The layer name to use in the sql, where a table name would normally go, is literally the exact string `sql_statement`
+Dealing with custom columns at scale is best accomplished by ignoring them during import. One approach is to use the `-sql` option with `ogr2ogr` to restrict what columns you load to all of, or a sub-set of, the columns in our Loveland Landgrid Parcel Schema. We use this same method for exporting and it causes one thing to watch out for: The layer name to use in the sql, where a table name would normally go, is literally the exact string `sql_statement`
 
 ~~~
 ogr2ogr -f 'PostgreSQL' PG:'dbname=dbname' st_county.gpkg -sql 'select wkb_geometry,geoid,etc from sql_statement' -nln st_county_imported
