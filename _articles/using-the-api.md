@@ -5,13 +5,19 @@ published: true
 intro: How developers can plug in to the Loveland parcel API
 title: Using the API
 ---
-#### Basics
+#### Introduction
 
 Thank you for your interest in our Parcel API! This tool is now out of beta, so please direct feedback, bugs and questions to **help@landgrid.com**.
 
 All requests will be to the `https://landgrid.com` domain, with the paths described below per-request.
 
-The only way to get parcel data from the API is via `/api/v1/search.json` and searching by point (lat/lon), Parcel Number, or Parcel Street Address.
+You can searching by point (lat/lon), Parcel Number, or Parcel Street Address only. A partial Owner Name search is still in development and described below.
+
+You can not pass in a polygon and get all of the parcels in the polygon.
+
+All requests return a JSON response on success, containing an array of GeoJSON features representing the matched parcels. An empty results set with no error means no parcels could be matched.
+
+Rates are limited to 10 simultaneous requests or approximately 5,000 requests per hour. Additional rates are available by speaking with a sales person.
 
 #### Authentication and tokens
 
@@ -78,13 +84,14 @@ Currently only matchest based on the start of the name string
 
 Target: "Jones, Festus"
 
-Matches: 'jone', 'jones'
-Will not match: 'fest', 'festus', etc
+Will get matched by: 'jon', 'jone', 'jones'
+
+Will not get matched: 'fest', 'festus', etc
 
 `GET /api/v1/search.json?owner=<name>&context=<path>&token=<token>`
 
 **Request parameters:**
-* `owner`: The owner name in "Last, First" format. Also matches by prefix, ie. you can pass just a last name to get any name beginning with that string. (Case insensitive, minimum 4 characters)
+* `owner`: The owner name in "Last, First" format. Matches by prefix, you can pass just a last name to get any name beginning with that string. (Case insensitive, minimum 4 characters)
 * `context` (optional): To specify what county or municipality to search in, you can provide a path. See description above.
 * `limit` (optional): Maximum number of results to return.
 
@@ -160,7 +167,7 @@ All of these requests return a JSON response on success, an array of GeoJSON fea
 A hash with details on all fields in the [Loveland Parcel Schema](/articles/schema)
 
 
-## Reporting data issues
+## Reporting data issues API end point
 
 *This is an alpha endpoint and may change before release*
 
