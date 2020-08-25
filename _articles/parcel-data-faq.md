@@ -1,6 +1,6 @@
 ---
 weight: 0
-category: Getting Started
+category: Data and API
 published: true
 title: FAQs - Parcel Data
 ---
