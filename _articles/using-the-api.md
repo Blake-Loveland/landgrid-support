@@ -23,7 +23,11 @@ Rates are limited to 10 simultaneous requests or approximately 5,000 requests pe
 
 All requests to the API must include a `token` parameter. If you have a Loveland data license, you can find this in **Account Settings > Preferences** after logging into your Site Control account.
 
-#### Place and Parcel Paths for Context
+#### Getting a parcel's full details
+
+Results from any of the search methods will 0 or more parcels. If any parcels are returned, each one will have a full parcel `path` ending in a number. This is the identifier to use for getting the details of a parcel. See the section below on requestion a full parcel record.
+
+#### Place Paths for Context (narrowing searches by area)
 
 Most API requests can take an optional `context` parameter that will narrow down the search to a specific area. These `context` values are in the form of paths.
 
@@ -31,7 +35,11 @@ The `context` parameter is most important to provide when doing searches that ca
 
 At Loveland we use place *pathnames* to specify administrative boundaries and uniquely describe a geographic region. This includes the country, state, county, and county subdivision. For example, `/us/mi/wayne/detroit` for Detroit or `/us/oh/hamilton` for Hamilton County, OH. If you're not sure what to use for your requests, browsing on [landgrid.com](https://landgrid.com/us) to the desired place and copying the path out of the URL is a good way to get started.
 
-*Parcel paths* are similar, and include an integer ID at the end. For example, `/us/mi/wayne/detroit/555`. These uniquely identify a parcel in our database in a simple, human-readable format.
+#### Parcel Paths for Details
+
+*Parcel paths* are similar, and include an integer ID at the end. For example, `/us/mi/wayne/detroit/555`. These uniquely identify a parcel in our database in a simple, human-readable format. These should be used as described below with the `/parcel.json` end-point to quickly and reliably get the full record for a parcel.
+
+Note: Eventually these will be replaced functionally with the `ll_uuid`, but at this time, the parcel `path` is the best identifier to use with the API once you have found a parcel by one of the search methods.
 
 
 ## Parcel search
@@ -154,7 +162,7 @@ All of these requests return a JSON response on success, an array of GeoJSON fea
 
 **Notes on properties:**
   * `headline`: a human-friendly display name for the parcel. If no address is available, it falls back to the parcel number.
-  * `path`: The parcel's unique identifier as described above in "Place & Parcel Paths"
+  * `path`: The parcel's unique identifier as described above in "Parcel Paths Above"
   * `fields`: Columns from the parcel table. These include [standard column names](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424) wherever fields are available, plus additional columns varying by the particular county & data available.
   * `field_labels`: Human-friendly labels for each key in `fields`.
   * `context`: A bit of info about the city or county where this parcel is found, including a `path` one can use as `context` for further searches.
