@@ -2,36 +2,32 @@
 weight: 1
 category: Data and API
 published: true
-intro: How developers can plug in to the Loveland parcel API
+intro: How developers can use the Loveland parcel API
 title: Using the API
 ---
-#### Introduction
+### Introduction
 
-Thank you for your interest in our Parcel API! This tool is now out of beta, so please direct feedback, bugs and questions to **help@landgrid.com**.
+Thank you for your interest in our Parcel API! Please direct feedback, bugs and questions to **help@landgrid.com**.
 
-All requests will be to the `https://landgrid.com` domain, with the paths described below per-request.
+All requests are to the `https://landgrid.com` domain, with the paths described below per-request.
 
-You can searching by point (lat/lon), Parcel Number, or Parcel Street Address only. A partial Owner Name search is still in development and described below.
+You can searching by point (lat/lon), Parcel Number, or Parcel Street Address only. A partial owner name search is still in development and described below. The API does not yet support querying by polygons to get all of the parcels in the polygon.
 
-You can not pass in a polygon and get all of the parcels in the polygon.
+All requests return a JSON response containing an array of GeoJSON features representing the matched parcels. An empty results set with no error means no parcels could be matched.
 
-All requests return a JSON response on success, containing an array of GeoJSON features representing the matched parcels. An empty results set with no error means no parcels could be matched.
+Rates are limited to 10 simultaneous requests or approximately 5,000 requests per hour. Additional rates are available by speaking with a salesperson.
 
-Rates are limited to 10 simultaneous requests or approximately 5,000 requests per hour. Additional rates are available by speaking with a sales person.
+### General concepts
 
 #### Authentication and tokens
 
-All requests to the API must include a `token` parameter. If you have a Loveland data license, you can find this in **Account Settings > Preferences** after logging into your Site Control account.
-
-#### Getting a parcel's full details
-
-Results from any of the search methods will 0 or more parcels. If any parcels are returned, each one will have a full parcel `path` ending in a number. This is the identifier to use for getting the details of a parcel. See the section below on requestion a full parcel record.
+All requests to the API must include a `token` parameter. If you have a Loveland data license, you can find this in **Account Settings > Preferences** after logging into your account at landgrid.com.
 
 #### Place Paths for Context (narrowing searches by area)
 
 Most API requests can take an optional `context` parameter that will narrow down the search to a specific area. These `context` values are in the form of paths.
 
-The `context` parameter is most important to provide when doing searches that can have results from many different parts of the US. Specifically address or parcel number searches. The `context` parameter should not be provided when doing latitude and longitude based searches.
+The `context` parameter is most important to provide when doing searches that can have results from many different parts of the US, like address or parcel number searches. The `context` parameter should not be provided when doing latitude and longitude based searches.
 
 At Loveland we use place *pathnames* to specify administrative boundaries and uniquely describe a geographic region. This includes the country, state, county, and county subdivision. For example, `/us/mi/wayne/detroit` for Detroit or `/us/oh/hamilton` for Hamilton County, OH. If you're not sure what to use for your requests, browsing on [landgrid.com](https://landgrid.com/us) to the desired place and copying the path out of the URL is a good way to get started.
 
@@ -40,7 +36,6 @@ At Loveland we use place *pathnames* to specify administrative boundaries and un
 *Parcel paths* are similar, and include an integer ID at the end. For example, `/us/mi/wayne/detroit/555`. These uniquely identify a parcel in our database in a simple, human-readable format. These should be used as described below with the `/parcel.json` end-point to quickly and reliably get the full record for a parcel.
 
 Note: Eventually these will be replaced functionally with the `ll_uuid`, but at this time, the parcel `path` is the best identifier to use with the API once you have found a parcel by one of the search methods.
-
 
 ## Parcel search
 
@@ -88,13 +83,9 @@ An array of parcels sorted by descending relevance rank. An empty results set wi
 
 *This is an alpha search method and will change before release*
 
-Currently only matchest based on the start of the name string
+Currently only matchest based on the start of the name string.
 
-Target: "Jones, Festus"
-
-Will get matched by: 'jon', 'jone', 'jones'
-
-Will not get matched: 'fest', 'festus', etc
+For example, if you are looking for a parcel owned by "Jones, Festus", you can search by 'jon', 'jone', 'jones', etc. Searchin for 'fest', 'festus', or etc. will not match the parcel.
 
 `GET /api/v1/search.json?owner=<name>&context=<path>&token=<token>`
 
@@ -102,6 +93,7 @@ Will not get matched: 'fest', 'festus', etc
 * `owner`: The owner name in "Last, First" format. Matches by prefix, you can pass just a last name to get any name beginning with that string. (Case insensitive, minimum 4 characters)
 * `context` (optional): To specify what county or municipality to search in, you can provide a path. See description above.
 * `limit` (optional): Maximum number of results to return.
+* `strict` (optional): Set `strict=1` to only return results in the `context`.
 
 ## Parcel details
 
@@ -173,7 +165,6 @@ All of these requests return a JSON response on success, an array of GeoJSON fea
 
 **Response:**
 A hash with details on all fields in the [Loveland Parcel Schema](/articles/schema)
-
 
 ## Reporting data issues API end point
 
