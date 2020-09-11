@@ -32,8 +32,8 @@ title: Data Customer Support - SLA & Guidelines
 **Documentation & Help:**
 
 -We provide all the necessary documentation and information at the data delivery time and many during the sales process as well.
-- Parcel FAQ's - 
-- Coverage Report - 
-- Parcel Schema -  
+- [Parcel FAQ's](https://support.landgrid.com/articles/parcel-data-faq/)
+- [Coverage Report](https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/edit?usp=sharing) 
+- [Parcel Schema](https://support.landgrid.com/articles/schema)  
 
 -This apart we also offer & share code examples and implementation strategies. Especially with using our tileserver.  Because each application is different, we however can’t offer hands-on development or professional services support unless it was addressed in the agreement.
