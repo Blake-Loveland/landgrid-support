@@ -1,7 +1,7 @@
 ---
 weight: 0
 category: Getting Started
-published: false
+published: true
 title: Data Customer Support - SLA & Guidelines
 ---
 ## A New Post
