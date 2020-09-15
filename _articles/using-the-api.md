@@ -69,6 +69,8 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 **Response:**
 An array of parcels sorted by descending relevance rank. An empty results set with no error means no parcels could be matched.
 
+Parcel attributes that have a null value are omitted from the results.
+
 ### By parcel number
 
 `GET /api/v1/search.json?parcelnumb=<pin>&token=<token>`
@@ -105,9 +107,11 @@ For example, if you are looking for a parcel owned by "Jones, Festus", you can s
 **Response:**
 A single GeoJSON Feature for the requested parcel (rather than an array of results).
 
+Parcel attributes that have a null value are omitted from the results.
+
 ## Response Format
 
-All of these requests return a JSON response on success, an array of GeoJSON features representing the matched parcels. These include polygon geometries and `properties`. Our standard fields are documented in the [Loveland Parcel Schema](/articles/schema) (some additional undocumented fields may be included in the `properties`). An empty results set with no error means no parcels could be matched. Here's an example response payload with results:
+All of these requests return a JSON response on success, an array of GeoJSON features representing the matched parcels. These include polygon geometries and `properties`. Our standard fields are documented in the [Loveland Parcel Schema](/articles/schema) (some additional undocumented fields may be included in the `properties`). An empty results set with no error means no parcels could be matched. Parcel attributes that have a null value are omitted from the results. Here's an example response payload with results:
 
     {
       results: [
@@ -155,7 +159,7 @@ All of these requests return a JSON response on success, an array of GeoJSON fea
 **Notes on properties:**
   * `headline`: a human-friendly display name for the parcel. If no address is available, it falls back to the parcel number.
   * `path`: The parcel's unique identifier as described above in "Parcel Paths Above"
-  * `fields`: Columns from the parcel table. These include [standard column names](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424) wherever fields are available, plus additional columns varying by the particular county & data available.
+  * `fields`: Columns from the parcel table. These include [standard column names](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424) wherever fields are available, plus additional columns varying by the particular county & data available. Parcel attributes that have a null value are omitted from the results.
   * `field_labels`: Human-friendly labels for each key in `fields`.
   * `context`: A bit of info about the city or county where this parcel is found, including a `path` one can use as `context` for further searches.
 
