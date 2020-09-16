@@ -49,7 +49,7 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 * `lat`: Latitude (y-coord) in decimal degrees, WGS84 (EPSG 4326) projection.
 * `lon`: Longitude (x-coord), same.
 
-**To search all parcels in a radius of a point:**
+**To return all parcels in a radius of a point:**
 * `nearest`: Pass `1` to return parcels within a radius instead of an exact match at the lat-long.
 * `limit` (optional): Maximum number of results to return.
 * `radius` (optional): Give a radius in meters to search within. Default 50, maximum 500
