@@ -1,6 +1,6 @@
 ---
 weight: 0
-category: Landgrid Data
+category: Data and API
 published: true
 title: The Loveland Parcel Schema
 permalink: /articles/schema

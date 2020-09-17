@@ -1,14 +1,14 @@
 ---
 weight: 1
-category: Developer Notes
+category: Data and API
 published: true
 intro: How developers can use the Loveland tileserver
 title: Using the Tileserver
 ---
 
-The Loveland tile service provides parcel tiles in raster and vector formats for use with web mapping tools like [Mapbox GL](https://www.mapbox.com/help/define-mapbox-gl/) and [Leaflet](https://leafletjs.com/). This service is available to clients with a [nationwide data license](https://landgrid.com/parcels).
+The Loveland Tileserver provides parcel tiles in raster and vector formats for use with web mapping tools like [Mapbox GL](https://www.mapbox.com/help/define-mapbox-gl/) and [Leaflet](https://leafletjs.com/). This service is available to clients with a [nationwide data license](https://landgrid.com/parcels) or [tileserver API subscription](https://landgrid.com/tiles).
 
-Please direct feedback, bugs and questions to [team@landgrid.com](mailto:team@landgrid.com).
+Please direct feedback, bugs and questions to [help@landgrid.com](mailto:help@landgrid.com).
 
 ## Tileserver API
 
@@ -16,7 +16,7 @@ All requests will be to the `https://tiles.makeloveland.com` domain, with the pa
 
 ### Authentication and tokens
 
-All requests to the Tileserver API must include a `token` parameter. The same Loveland/Landgrid API Tokens can be used for all of our API's, they are not service specific. So if you have a working Token for any Landgrid API use, that token will work for all our API uses, including our Tileserver API.
+All requests to the Tileserver API must include a `token` parameter. The same Loveland/Landgrid API Tokens can be used for all of our APIs. If you have a working token for any Landgrid API, that token will work for all our APIs, including our Tileserver.
 
 Please contact us via [team@landgrid.com](mailto:team@landgrid.com) to get an API Token if you do not have one yet.
 
@@ -26,7 +26,7 @@ Landgrid provides a styleable, seamless, nationwide layer of parcel outlines in 
 
 #### TileJSON
 
-We serve [TileJSON](https://www.mapbox.com/help/define-tilejson/)-formatted metadata for generic parcel tiles which is used to get the full url to either our raster or vector tiles:
+We serve [TileJSON](https://www.mapbox.com/help/define-tilejson/)-formatted metadata for generic parcel tiles which is used to get the full url to either our raster or vector tile layers:
 
 * Raster tiles: `/api/v1/parcels`
 * Vector tiles: `/api/v1/parcels?format=mvt`
@@ -127,45 +127,54 @@ L.tileLayer(
 </html>
 ```
 
-#### ArcGISOnline (AGOL) note
+#### ArcGIS Online (AGOL)
 
 ArcGISOnline TiledLayer works with our raster tile layer, but the `{z}/{x}/{y}` of our urls needs to be changed to the literal text string that looks like this: `{level}/{col}/{row}`
 
-You literally leave those `level`, `col`, and `row` words in there instead of the `z,x,y` our TileJson returns in URLs.
+You literally leave those `level`, `col`, and `row` words in there instead of the `z,x,y` our TileJson returns in URLs:
 
 ```
 AGSWebTiledLayer(urlTemplate: "https://tiles.makeloveland.com/api/v1/parcels/{level}/{col}/{row}.png?token=
 ```
 
+#### ArcGIS Desktop
+
+ArcGIS Desktop products only support Esri based vector tile layers. However, ArcGIS Desktop users can also use our raster tiles for integrations using the same template as ArcGIS Online: 
+
+```
+https://tiles.makeloveland.com/api/v1/parcels/{level}/{col}/{row}.png?token=
+```
+
 ### Custom layers
 
-Use a Layer to get tiles with custom styles and data.
+You can create a custom Layer to get tiles with custom styles and data returned.
 
-A Layer defines the set of data and, for raster tiles, styles that you get in a tile. Each layer has a unique ID. Each unqiue set of styles, fields, and queries defines new layer -- you cannot edit existing layers.
+A Layer defines the set of data and, for raster tiles, styles, that you get in a tile. Each layer has a unique ID. Each unqiue set of styles, fields, and queries defines new layer -- you cannot edit existing layers, just create new ones.
 
 #### How to create a custom layer
 
 The basic order of operations to create a custom layer is:
 
-1. POST some json to define the styles or custom data for the layer.
+1. POST JSON to define the styles or custom data for the layer.
 2. Read the response TileJSON to get the new layer's url(s).
-3. Use the urls specified in the response.
+3. Use the urls specified in the response on your map.
 
-To create a custom layer, POST layer definition json (example below) to `/api/v1/sources?token=`. You will get a [TileJSON response](https://www.mapbox.com/help/define-tilejson/) response for the layer back with the full url to the custom layer tileset.
+##### Layer creation endpoint
 
-##### Vector or raster tile layers
+`POST /api/v1/sources?token=`
 
-Custom layer tilesets can be either vector (.mvt) or raster (.png) format. If you pass the `?format='mvt'` parameter to a layer definition POST the "tiles" url will contain a .mvt vector url. If you do not include a `?format=` parameter, our raster .png url will be in the "tiles" key by default.
+**Request parameters:**
+* `format` (optional): The format of tiles you want. Defaults to `png`. Specify `mvt` for Mapbox Vector Tile format tiles. 
 
-##### Layer definitions
+**Request body:**
 
-A layer definition has:
+The JSON for a layer definition has these parameters:
 
 - `query`: Set to `parcel: true` to select parcel data
-- `fields`: Optional, a list of [standard schema columns](/articles/schema) to include. By default, tiles include `address`, `owner`, and `path`
-- `styles`: Optional, a string of [CartoCSS styles](https://carto.com/developers/styling/cartocss/) (see "composing styles" below). We apply a set of default Loveland styles if you don't specify any
+- `fields` (optional): A list of [standard schema columns](/articles/schema) to include. By default, tiles include `address`, `owner`, and `path`
+- `styles` (optional): A string of [CartoCSS styles](https://carto.com/developers/styling/cartocss/) (see "composing styles" below). We apply a set of default Loveland styles if you don't specify any
 
-##### Sample layer definition request
+**Sample request body:**
 
 This layer requests parcels with a custom line color and additional fields:
 
@@ -182,7 +191,7 @@ POST /api/v1/sources?token=
 }
 ```
 
-##### Sample layer definition response
+**Sample layer request response:**
 
 You will get a [TileJSON response](https://www.mapbox.com/help/define-tilejson/) response that includes:
 
@@ -218,7 +227,7 @@ Always recreate the layer by POSTing your layer definition again.
 }
 ```
 
-##### Creating styles
+##### Custom raster map styles
 
 You can style raster tiles (.pngs) by writing [CartoCSS styles](https://carto.com/developers/styling/cartocss/). Styles should be applied to the `#loveland` layer.
 
@@ -259,3 +268,8 @@ $.ajax({
   L.tileLayer(data.tiles[0]).addTo(map);
 });
 ```
+
+##### Custom vector map styles
+
+Vector maps are styled client-side, and do not require a custom layer. Your mapping platform (for example, Mapbox GL or Tangram) will have detailed documentation on how to style data. 
+

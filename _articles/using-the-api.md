@@ -1,32 +1,40 @@
 ---
 weight: 1
-category: Developer Notes
+category: Data and API
 published: true
-intro: How developers can plug in to the Loveland parcel API
+intro: How developers can use the Loveland parcel API
 title: Using the API
 ---
-### Basics
 
-Thank you for your interest in our Parcel API! This tool is now out of beta, so please direct feedback, bugs and questions to **help@landgrid.com**.
+Thank you for your interest in our Parcel API! Please direct feedback, bugs and questions to **help@landgrid.com**.
 
-All requests will be to the `https://landgrid.com` domain, with the paths described below per-request.
+All requests are to the `https://landgrid.com` domain, with the paths described below per-request.
 
-The only way to get parcel data from the API is via `/api/v1/search.json` and searching by point (lat/lon), Parcel Number, or Parcel Street Address.
+You can searching by point (lat/lon), Parcel Number, or Parcel Street Address only. A partial owner name search is still in development and described below. The API does not yet support querying by polygons to get all of the parcels in the polygon.
+
+All requests return a JSON response containing an array of GeoJSON features representing the matched parcels. An empty results set with no error means no parcels could be matched.
+
+Rates are limited to 10 simultaneous requests or approximately 5,000 requests per hour. Additional rates are available by speaking with a salesperson.
+
+### General concepts
 
 #### Authentication and tokens
 
-All requests to the API must include a `token` parameter. If you have a Loveland data license, you can find this in **Account Settings > Preferences** after logging into your Site Control account.
+All requests to the API must include a `token` parameter. If you have a Loveland data license, you can find this in **Account Settings > Preferences** after logging into your account at landgrid.com.
 
-#### Place and Parcel Paths for Context
+#### Place Paths for Context (narrowing searches by area)
 
 Most API requests can take an optional `context` parameter that will narrow down the search to a specific area. These `context` values are in the form of paths.
 
-The `context` parameter is most important to provide when doing searches that can have results from many different parts of the US. Specifically address or parcel number searches. The `context` parameter should not be provided when doing latitude and longitude based searches.
+The `context` parameter is most important to provide when doing searches that can have results from many different parts of the US, like address or parcel number searches. The `context` parameter should not be provided when doing latitude and longitude based searches.
 
 At Loveland we use place *pathnames* to specify administrative boundaries and uniquely describe a geographic region. This includes the country, state, county, and county subdivision. For example, `/us/mi/wayne/detroit` for Detroit or `/us/oh/hamilton` for Hamilton County, OH. If you're not sure what to use for your requests, browsing on [landgrid.com](https://landgrid.com/us) to the desired place and copying the path out of the URL is a good way to get started.
 
-*Parcel paths* are similar, and include an integer ID at the end. For example, `/us/mi/wayne/detroit/555`. These uniquely identify a parcel in our database in a simple, human-readable format.
+#### Parcel Paths for Details
 
+*Parcel paths* are similar, and include an integer ID at the end. For example, `/us/mi/wayne/detroit/555`. These uniquely identify a parcel in our database in a simple, human-readable format. These should be used as described below with the `/parcel.json` end-point to quickly and reliably get the full record for a parcel.
+
+Note: Eventually these will be replaced functionally with the `ll_uuid`, but at this time, the parcel `path` is the best identifier to use with the API once you have found a parcel by one of the search methods.
 
 ### Parcel search
 
@@ -40,7 +48,7 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 * `lat`: Latitude (y-coord) in decimal degrees, WGS84 (EPSG 4326) projection.
 * `lon`: Longitude (x-coord), same.
 
-**To search all parcels in a radius of a point:**
+**To return all parcels in a radius of a point:**
 * `nearest`: Pass `1` to return parcels within a radius instead of an exact match at the lat-long.
 * `limit` (optional): Maximum number of results to return.
 * `radius` (optional): Give a radius in meters to search within. Default 50, maximum 500
@@ -60,7 +68,9 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 **Response:**
 An array of parcels sorted by descending relevance rank. An empty results set with no error means no parcels could be matched.
 
-#### By parcel number
+Parcel attributes that have a null value are omitted from the results.
+
+### By parcel number
 
 `GET /api/v1/search.json?parcelnumb=<pin>&token=<token>`
 
@@ -74,19 +84,17 @@ An array of parcels sorted by descending relevance rank. An empty results set wi
 
 *This is an alpha search method and will change before release*
 
-Currently only matchest based on the start of the name string
+Currently only matchest based on the start of the name string.
 
-Target: "Jones, Festus"
-
-Matches: 'jone', 'jones'
-Will not match: 'fest', 'festus', etc
+For example, if you are looking for a parcel owned by "Jones, Festus", you can search by 'jon', 'jone', 'jones', etc. Searchin for 'fest', 'festus', or etc. will not match the parcel.
 
 `GET /api/v1/search.json?owner=<name>&context=<path>&token=<token>`
 
 **Request parameters:**
-* `owner`: The owner name in "Last, First" format. Also matches by prefix, ie. you can pass just a last name to get any name beginning with that string. (Case insensitive, minimum 4 characters)
+* `owner`: The owner name in "Last, First" format. Matches by prefix, you can pass just a last name to get any name beginning with that string. (Case insensitive, minimum 4 characters)
 * `context` (optional): To specify what county or municipality to search in, you can provide a path. See description above.
 * `limit` (optional): Maximum number of results to return.
+* `strict` (optional): Set `strict=1` to only return results in the `context`.
 
 ## Parcel details
 
@@ -98,9 +106,15 @@ Will not match: 'fest', 'festus', etc
 **Response:**
 A single GeoJSON Feature for the requested parcel (rather than an array of results).
 
+<<<<<<< HEAD
 ### Response Format
+=======
+Parcel attributes that have a null value are omitted from the results.
 
-All of these requests return a JSON response on success, an array of GeoJSON features representing the matched parcels. These include polygon geometries and `properties`. Our standard fields are documented in the [Loveland Parcel Schema](/articles/schema) (some additional undocumented fields may be included in the `properties`). An empty results set with no error means no parcels could be matched. Here's an example response payload with results:
+## Response Format
+>>>>>>> gh-pages
+
+All of these requests return a JSON response on success, an array of GeoJSON features representing the matched parcels. These include polygon geometries and `properties`. Our standard fields are documented in the [Loveland Parcel Schema](/articles/schema) (some additional undocumented fields may be included in the `properties`). An empty results set with no error means no parcels could be matched. Parcel attributes that have a null value are omitted from the results. Here's an example response payload with results:
 
     {
       results: [
@@ -147,8 +161,8 @@ All of these requests return a JSON response on success, an array of GeoJSON fea
 
 **Notes on properties:**
   * `headline`: a human-friendly display name for the parcel. If no address is available, it falls back to the parcel number.
-  * `path`: The parcel's unique identifier as described above in "Place & Parcel Paths"
-  * `fields`: Columns from the parcel table. These include [standard column names](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424) wherever fields are available, plus additional columns varying by the particular county & data available.
+  * `path`: The parcel's unique identifier as described above in "Parcel Paths Above"
+  * `fields`: Columns from the parcel table. These include [standard column names](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424) wherever fields are available, plus additional columns varying by the particular county & data available. Parcel attributes that have a null value are omitted from the results.
   * `field_labels`: Human-friendly labels for each key in `fields`.
   * `context`: A bit of info about the city or county where this parcel is found, including a `path` one can use as `context` for further searches.
 
@@ -159,8 +173,7 @@ All of these requests return a JSON response on success, an array of GeoJSON fea
 **Response:**
 A hash with details on all fields in the [Loveland Parcel Schema](/articles/schema)
 
-
-## Reporting data issues
+## Reporting data issues API end point
 
 *This is an alpha endpoint and may change before release*
 
