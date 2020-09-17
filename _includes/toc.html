@@ -35,8 +35,11 @@
     {% assign maxHeader = include.h_max | default: 6 %}
     {% assign nodes = include.html | split: '<h' %}
     {% assign firstHeader = true %}
+    {% assign listSize = nodes | size %}
 
     {% capture listModifier %}{% if orderedList %}1.{% else %}-{% endif %}{% endcapture %}
+
+    {% if listSize != 2 %}
 
     {% for node in nodes %}
         {% if node == "" %}
@@ -99,6 +102,7 @@
         {% capture my_toc %}{{ my_toc }}
 {{ space }}{{ listModifier }} {{ listItemClass }} {{ list_item }}{% if include.anchor_class %}{:.{{ include.anchor_class }}}{% endif %}{% endcapture %}
     {% endfor %}
+    {% endif %}
 
     {% if include.class and include.class != blank %}
         {% capture my_toc %}{:.{{ include.class }}}

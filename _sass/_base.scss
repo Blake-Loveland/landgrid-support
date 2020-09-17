@@ -410,8 +410,11 @@ main {
   }
 
   h3, h4, h5, h6 { 
-    margin-top: 2em;
+    padding-top: 1em;
+    margin-bottom: 0;
     position: relative;
+    // font-family: $base-font-family;
+    // font-weight: bold;
   }
 
   h2 + h3,
@@ -454,8 +457,12 @@ main {
       margin-top: 2em;
     }
 
+    .header-link { 
+      display: none;
+    }
+  
     .intros {
-      margin-bottom: 2rem;
+      margin-bottom: $pad;
 
       .two-up {
         display: flex;
@@ -568,3 +575,37 @@ table {
    }
 }
 
+
+@media screen and (max-width: $on-palm) {
+  #content {
+    flex-direction: column-reverse;
+
+    &.homepage {
+      flex-direction: column;
+
+      .sidenav { 
+        display: none;
+      }
+    }
+
+    .sidenav {
+      max-width: inherit;
+    }
+
+    main {
+      padding: $pad - ($pad / 2);
+    }
+
+
+    .sidebar {
+      padding: $pad - ($pad / 2);
+      margin: 0;
+
+      flex: none;
+
+      .toc {
+        padding: 0;
+      }
+    }
+  }
+}
