@@ -7,15 +7,15 @@ title: FAQs - Parcel Data
 
 ## Frequently Asked Questions (FAQ) About Landgrid Parcel Data
 
-### Where does your County data come from?
+#### Where does your County data come from?
 
 We source our data directly from each County or whom they designate as the official source for their parcel data.
 
-### Some Counties are missing from your data set but are labeled as “Available”, what does that mean?
+#### Some Counties are missing from your data set but are labeled as “Available”, what does that mean?
 
 Available County data means that we have confirmed the data is available from the County, but for some reason we did not obtain the data. The usual reason is cost from the County, some Counties  price their parcel data very high. If you are interested in any missing County, please let us know and we will update our research to confirm costs or other changes and work something out with you to obtain and standardize that data.
 
-## Do you have "this" attribute for "this" County?
+#### Do you have "this" attribute for "this" County?
 
 A current, detailed list of every County in our data set and what data fields we have for each is always available at the following URL. This spreadsheet can be downloaded as a CSV for closer analysis:  [https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/](https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/)
 
