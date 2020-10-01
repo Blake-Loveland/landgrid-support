@@ -55,9 +55,9 @@ Some of our Loveland Landgrid Parcel Schema column names are longer than the Esr
 
 **When was your data last updated?**
 
-Approximately 84% of our data has been refreshed in the last year (as of May 9, 2020), and we are working to have the remainder updated as soon as possible, with an increasing frequency of updates after that.
+On average 94% of our parcels have been refreshed in the last 12 months, with most of those in the last 6 months. We work on a rolling update schedule, refreshing county data directly for 100-300 counties per month.
 
-We make every effort to update our data at least yearly, with major metro areas being updated twice a year. Going forward, we will be increasing the frequency of data updates to better match the individual County update schedules.
+Our USPS related attributes are unpdated monthly for our entire data set.
 
 All data is tracked with the date of “last refresh” from the County. 
 
