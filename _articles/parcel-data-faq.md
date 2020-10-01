@@ -55,7 +55,9 @@ Some of our Loveland Landgrid Parcel Schema column names are longer than the Esr
 
 **When was your data last updated?**
 
-On average 94% of our parcels have been refreshed in the last 12 months, with most of those in the last 6 months. We work on a rolling update schedule, refreshing county data directly for 100-300 counties per month.
+On average 94% of our parcels have been refreshed in the last 12 months, with most of those in the last 6 months. We work on a rolling update schedule, refreshing county data directly for 100-300 counties per month, usually grouped by state. 
+
+Monthly we share, both in machine readable format and via a monthly update email, what counties have been updated, and what states are in the pipeline for the upcoming quarter. [An example of our Monthly Data Update Email is available.](https://landgrid.com/blog/janparcelupdate)
 
 Our USPS related attributes are unpdated monthly for our entire data set.
 
