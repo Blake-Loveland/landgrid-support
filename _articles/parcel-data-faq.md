@@ -59,7 +59,7 @@ On average 94% of our parcels have been refreshed in the last 12 months, with mo
 
 Monthly we share, both in machine readable format and via a monthly update email, what counties have been updated, and what states are in the pipeline for the upcoming quarter. [An example of our Monthly Data Update Email is available.](https://landgrid.com/blog/janparcelupdate)
 
-Our USPS related attributes are unpdated monthly for our entire data set.
+Our USPS related attributes are updated monthly for our entire data set.
 
 All data is tracked with the date of “last refresh” from the County. 
 
