@@ -7,15 +7,15 @@ title: FAQs - Parcel Data
 
 ### Landgrid Parcel Data
 
-**Where does your County data come from?**
+#### Where does your County data come from?
 
 We source our data directly from each County or whom they designate as the official source for their parcel data.
 
-**Some Counties are missing from your data set but are labeled as “Available”, what does that mean?**
+#### Some Counties are missing from your data set but are labeled as “Available”, what does that mean?
 
 Available County data means that we have confirmed the data is available from the County, but for some reason we did not obtain the data. The usual reason is cost from the County, some Counties  price their parcel data very high. If you are interested in any missing County, please let us know and we will update our research to confirm costs or other changes and work something out with you to obtain and standardize that data.
 
-**Do you have "this" attribute for "this" County?**
+#### Do you have "this" attribute for "this" County?
 
 A current, detailed list of every County in our data set and what data fields we have for each is always available at the following URL. This spreadsheet can be downloaded as a CSV for closer analysis:  [https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/](https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/)
 
@@ -55,9 +55,11 @@ Some of our Loveland Landgrid Parcel Schema column names are longer than the Esr
 
 **When was your data last updated?**
 
-Approximately 84% of our data has been refreshed in the last year (as of May 9, 2020), and we are working to have the remainder updated as soon as possible, with an increasing frequency of updates after that.
+On average 94% of our parcels have been refreshed in the last 12 months, with most of those in the last 6 months. We work on a rolling update schedule, refreshing county data directly for 100 - 300 counties per month, usually grouped by state. 
 
-We make every effort to update our data at least yearly, with major metro areas being updated twice a year. Going forward, we will be increasing the frequency of data updates to better match the individual County update schedules.
+Monthly we share, both in machine readable format and via a monthly update email, what counties have been updated, and what states are in the pipeline for the upcoming quarter. [An example of our Monthly Data Update Email is available.](https://landgrid.com/blog/janparcelupdate)
+
+Our USPS related attributes are updated monthly for our entire data set.
 
 All data is tracked with the date of “last refresh” from the County. 
 
@@ -65,7 +67,13 @@ A detailed listing of every County in our data set and the date we last refreshe
 
 **How do you provide data updates?**
 
-All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county's FIPS code (`geoid` in our Loveland Landgrid Parcel Schema column). We add or refresh 20-300 counties every month with data from the county source.
+Monthly we update every data tier with the refreshed counties for the month, usually 100 - 300 counties per month.
+
+Monthly premium attribute data tiers are updated for _every county in the data set_, because every county's USPS related attributes have been updated for the month.
+
+Quarterly, at the start of the calendar quarter, _every data tier will have every county exported_. We make improvements to the nationwide data set on a regular basis, often based on feedback from clients. Quartly, full data set exports ensure every data tier has all of the improvements across the data set, even if the data was not refreshed directly from the county that quarter. We do not maintain an easily sharable changelog for data set wide fixes, but give a notice to significant ones in our monthly data update emails.
+
+All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county's FIPS code (`geoid` in our Loveland Landgrid Parcel Schema column). We add or refresh 100 - 300 counties every month with data from the county source.
 
 Each month we replace the existing county zip file in a client's download directory with the refreshed county files.
 
