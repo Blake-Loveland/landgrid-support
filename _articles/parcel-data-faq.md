@@ -19,11 +19,15 @@ Available County data means that we have confirmed the data is available from th
 
 A current, detailed list of every County in our data set and what data fields we have for each is always available at the following URL. This spreadsheet can be downloaded as a CSV for closer analysis:  [https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/](https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/)
 
-**How do you standardize County data generally?**
+#### How do you standardize County data generally?**
 
 The main way we make county data much easier to work with is by standardizing the column names of the raw data provided by each county. We do not standardize the values in most columns, most we keep those exactly as provided by the county, but we do make sure that every county in our system is converted to a standard table schema, with consistent column names across the nationwide dataset. Please see “What is the Loveland Landgrid Parcel Schema?” question below.
 
 In addition, we further standardize the parcel address fields using the US Postal Service database of addresses. For details on address specific standardization please see the "How do you standardize and normalize addresses?" question below. 
+
+#### How do you deliver bulk data?
+
+All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county’s FIPS code (geoid in our Loveland Parcel Schema column).
 
 **What is the Loveland Landgrid Parcel Schema?**
 
