@@ -75,7 +75,7 @@ Monthly we update every data tier with the refreshed counties for the month, usu
 
 Monthly premium attribute data tiers are updated for _every county in the data set_, because every county's USPS related attributes have been updated for the month.
 
-Quarterly, at the start of the calendar quarter, _every data tier will have every county exported_. We make improvements to the nationwide data set on a regular basis, often based on feedback from clients. Quartly, full data set exports ensure every data tier has all of the improvements across the data set, even if the data was not refreshed directly from the county that quarter. We do not maintain an easily sharable changelog for data set wide fixes, but give a notice to significant ones in our monthly data update emails.
+Quarterly, at the start of the calendar quarter, _every data tier will have every county exported_. We make improvements to the nationwide data set on a regular basis, often based on feedback from clients. Quartly, full data set exports ensure every data tier has all of the improvements across the data set, even if the data was not refreshed directly from the county that quarter. We are working to provide an easily sharable changelog for data set wide fixes, but currently give a notice to significant updates in our monthly data update emails.
 
 All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county's FIPS code (`geoid` in our Loveland Landgrid Parcel Schema column). We add or refresh 100 - 300 counties every month with data from the county source.
 
