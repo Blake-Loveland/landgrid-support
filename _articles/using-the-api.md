@@ -29,6 +29,8 @@ Most API requests can take an optional `context` parameter that will narrow down
 
 The `context` parameter is most important to provide when doing searches that can have results from many different parts of the US, like address or parcel number searches. The `context` parameter should not be provided when doing latitude and longitude based searches.
 
+All paths should be all lowercase characters.
+
 At Loveland we use place *pathnames* to specify administrative boundaries and uniquely describe a geographic region. This includes the country, state, county, and county subdivision. For example, `/us/mi/wayne/detroit` for Detroit or `/us/oh/hamilton` for Hamilton County, OH. If you're not sure what to use for your requests, browsing on [landgrid.com](https://landgrid.com/us) to the desired place and copying the path out of the URL is a good way to get started.
 
 #### Parcel Paths for Details
