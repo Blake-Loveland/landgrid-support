@@ -71,15 +71,15 @@ A detailed listing of every County in our data set and the date we last refreshe
 
 **How do you provide data updates?**
 
-Monthly we update every data tier with the refreshed counties for the month, usually 100 - 300 counties per month.
+Monthly, we update every data tier with the refreshed counties for the month, usually 100 - 300 counties per month.
 
-Monthly premium attribute data tiers are updated for _every county in the data set_, because every county's USPS related attributes have been updated for the month.
+Monthly, premium attribute data tiers are updated for _every county in the data set_, because every county's USPS related attributes have been updated for the month.
 
 Quarterly, at the start of the calendar quarter, _every data tier will have every county exported_. We make improvements to the nationwide data set on a regular basis, often based on feedback from clients. Quarterly, full data set exports ensure every data tier has all of the improvements across the data set, even if the data was not refreshed directly from the county that quarter. We are working to provide an easily sharable changelog for data set wide fixes, but currently give a notice to significant updates in our monthly data update emails.
 
 All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county's FIPS code (`geoid` in our Loveland Landgrid Parcel Schema column). We add or refresh 100 - 300 counties every month with data from the county source.
 
-Each month we replace the existing county zip file in a client's download directory with the refreshed county files.
+Each month we replace the existing county zip file in a client's download directory with the refreshed county files. We do not provide 'diff' files or deltas for the data at this time.
 
 We send out an email each month listing the counties that were refreshed, as well as an updated listing of all the counties and their `last_refresh` date, which is the last date we updated the data directly from the source.
 
