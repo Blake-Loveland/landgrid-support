@@ -122,7 +122,7 @@ Editing or working with most of our data requires software for working with geog
 
 There are other free and paid software options for working with geospatial data, but all of it has a learning curve. We are not able to provide support for those 3rd party softare applications. For QGIS at least, the best options for learning are via the many community developed tutorial videos and texts. 
 
-We suggest starting the the GeoPackage (geoPKG, .gpkg) formatted files to use in QGIS or any geospatial software.
+We suggest starting with the GeoPackage (geoPKG, .gpkg) formatted files to use in QGIS or any geospatial software.
 
 #### What about Google Earth?
 
