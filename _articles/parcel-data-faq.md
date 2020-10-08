@@ -120,7 +120,7 @@ The original County provided raw address data is always retained unaltered and i
 
 Editing or working with most of our data requires software for working with geographic and geospatial data The OSGeo project provides [free and open source desktop software to work this kind of data called QGIS](https://qgis.org/).
 
-There are other free and paid software options for working with geospatial data, but all of it has a learning curve and for QGIS at least, the best options for learning are via the many community tutorial videos or texts.
+There are other free and paid software options for working with geospatial data, but all of it has a learning curve. We are not able to provide support for those 3rd party softare applications. For QGIS at least, the best options for learning are via the many community developed tutorial videos and texts. 
 
 We suggest starting the the GeoPackage (geoPKG, .gpkg) formatted files to use in QGIS or any geospatial software.
 
