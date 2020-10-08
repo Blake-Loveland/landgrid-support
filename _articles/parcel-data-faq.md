@@ -116,6 +116,18 @@ Parcel addresses are then passed through a USPS address verification system whic
 
 The original County provided raw address data is always retained unaltered and included on the parcel record.
 
+#### What software can I use to work with your data?
+
+Editing or working with most of our data requires software for working with geographic and geospatial data The OSGeo project provides [free and open source desktop software to work this kind of data called QGIS](https://qgis.org/).
+
+There are other free and paid software options for working with geospatial data, but all of it has a learning curve and for QGIS at least, the best options for learning are via the many community tutorial videos or texts.
+
+We suggest starting the the GeoPackage (geoPKG, .gpkg) formatted files to use in QGIS or any geospatial software.
+
+#### What about Google Earth?
+
+We provide KML/KMZ options for Google Earth and Google Earth Pro, but neither of those applications support editing our data, only viewing the data. If you need to make changes to the data you get from us, you will need a desktop application like QGIS discussed above.
+
 **How do you load all of these files into a database?**
 
 We generally work in a GNU/Linux environment using the command line. Our internal workflow makes use of the OSGeo Foundation libraries and tools including GDAL/OGR and PostGIS for PostgreSQL. The OSGeo project also provides an MS Windows 10 installer for using the tools on a Windows machine named [OSGeo4Win](https://trac.osgeo.org/osgeo4w/).
