@@ -5,7 +5,7 @@ published: true
 title: FAQs - Parcel Data
 ---
 
-## Frequently Asked Questions (FAQ) About Landgrid Parcel Data
+### Landgrid Parcel Data
 
 #### Where does your County data come from?
 
@@ -202,7 +202,7 @@ Please contact us at help@landgrid.com if you find issues, or have any questions
 
 We projected each parcel and building footprint into its UTM Zone SRS, calculated the area in meters and converted that to acres and sqft. This should provide a relatively uniform and consistent value across the US.
 
-## API Access
+### API Access
 
 **What is an API and why might I use one?**
 
@@ -229,7 +229,7 @@ Windows users can use [WinSCP](https://winscp.net/), which also supports [script
 MacOS users can use [CyberDuck](https://cyberduck.io/)
 
 
-## LBCS - Usecode Classification
+### LBCS - Usecode Classification
 
 **What is LBCS?**
 

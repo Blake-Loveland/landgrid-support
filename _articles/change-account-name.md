@@ -1,6 +1,6 @@
 ---
 weight: 1
-category: Your Account
+category: Your Landgrid Account
 published: true
 intro: You can change the name of your account at any time
 title: Change Group Name or URL

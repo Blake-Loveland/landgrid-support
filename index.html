@@ -1,25 +1,50 @@
 ---
 layout: default
 ---
-<div class="front">
+<section id="content" class="homepage">
+  <!--
   <div class="col-md-12">
     <div class="intro">
       <div class="in">
         <h1>How can we help?</h1>
-        <!-- <p>Something about how we want to help.</p> -->
       </div>
     </div>
   </div>
+  -->
 
-  <div class="col-sm-3">
-    <div class="sidenav">
-      {% include search.html %}
+  {% include sidenav.html %}
+
+  <main id="main" class="homepage">
+    <!--<div class="intros">
+      <div class="two-up">
+        <div class="category">
+          <h3>Landgrid.com</h3>
+          <p>How to get started on the site</p>
+          <a href="/articles/introduction" class="btn">Getting started</a>
+
+        </div>      
+        <div class="category">
+          <h3>Landgrid Data</h3>
+          <p>FAQs about our bulk data</p>
+          <a href="/articles/parcel-data-faq" class="btn">Bulk data support</a>
+        </div>     
+      </div> 
+    </div>-->
+    <div class="intros">
+      <div class="category">
+        <h3>Welcome to Landgrid Support!</h3>
+        <p>We're here to help. If you're just getting started, we have information 
+          on our <a href="/articles/introduction-starter">Free</a>, 
+          <a href="/articles/introduction">Pro</a>, <a href="https://landgrid.com/team">Team</a>, and 
+          <a href="https://landgrid.com/enterprise">Enterprise</a> plans, as well as 
+          <a href="/articles/parcel-data-faq/">FAQs about our bulk data</a>.
+        </p>
+        <p>Can't find what you need? Just email <a href="mailto:help@landgrid.com">help@landgrid.com</a> for assistance.</p>
+      </div>      
     </div>
-  </div>
 
-  <div class="col-sm-9 col-md-7">
     {% for category in site.category-list %}
-      <section class="category row">
+      <section class="category">
         <h2>{{ category }}</h2>
 
         {% assign articles = site.articles | where: 'category', category %}
@@ -34,5 +59,10 @@ layout: default
         {% endfor %}
       </section>
     {% endfor %}
-  </div>
-</div>
+  </main>
+
+  <div class="sidebar">
+    <!--<img src="{{site.baseurl}}/img/sneak.png" width="100%">-->
+    <img src="{{site.baseurl}}/img/heart.png" width="100%">
+  </div>    
+</section>

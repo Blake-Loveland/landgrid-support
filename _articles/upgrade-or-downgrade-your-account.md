@@ -1,6 +1,6 @@
 ---
 weight: 0
-category: Your Account
+category: Your Landgrid Account
 published: false
 intro: How to upgrade or downgrade your current plan
 title: Change Your Subscription Plan

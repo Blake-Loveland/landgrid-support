@@ -1,9 +1,9 @@
 ---
 weight: 5
-category: Your Account
+category: Your Landgrid Account
 published: true
 intro: How to cancel your account
-title: Cancelling Your Account
+title: Cancelling Your Landgrid Account
 ---
 We will be sad to see you go, but if you’ve completed your project then it might be time to cancel your membership and close the account.
 

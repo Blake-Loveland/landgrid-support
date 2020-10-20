@@ -9,6 +9,7 @@
   }
 }
 
+
 body,
 h1,
 h2,
@@ -49,21 +50,23 @@ body {
 
 #wrapper {
   display: flex;
+  flex: 1;
+  height: 100vh;
   min-height: 100%;
   flex-direction: column;
 }
 
 #content {
+  display: flex;
   flex: 1;
-  margin-bottom: 50px;
 
   a {
     color: $text-color;
+    text-decoration: underline;
   }
 
   a:link, a:hover, a:active, a:visited {
     color: $link-color;
-    text-decoration: underline;
   }
 
 }
@@ -172,17 +175,33 @@ pre {
   color: $grey-color;
 }
 
+.btn { 
+  text-decoration: none!important;
+  background: $eggplant;
+  color: #fff!important;
+  display: inline-block;
+  padding: 0.66em 1.25em;
+  border-radius: 20px;
+}
+
 nav {
   background-color: $eggplant-dark-t;
   line-height: 48px;
   font-size: 16px;
   font-family: Lato, sans-serif;
   padding: 0 12px;
+  display: flex;
 
   .site-title {
     font-family: "MuseoSlab-700";
     display: inline-block;
+    flex: 1;
+
+    &.main { 
+      text-align: right;
+    }
   }
+  
 
   a,
   a:link,
@@ -208,7 +227,6 @@ header {
   background: transparent url('../img/omg-purple.jpg');
   background-size: cover;
   padding: 0;
-  margin-bottom: 3em;
 
   .company-banner-in {
     overflow: auto; // prevent margin collapse with parent
@@ -276,12 +294,38 @@ header {
 }
 
 .sidenav {
+  max-width: 300px;
+  background: $land;
+  padding: $pad;
+
   h2 {
     font: $base-font-weight #{$base-font-size}/#{$base-line-height}
       $base-font-family;
     font-weight: 700;
     cursor: pointer;
   }
+
+  $caret-size: 4px;
+  .arrow {
+    width: 0; 
+    height: 0; 
+    border-top: $caret-size solid transparent;
+    border-bottom: $caret-size solid transparent;
+    
+    border-left: $caret-size solid $text-color;
+    display: inline-block;
+    transition: border 0.1s;
+  }
+  
+  .active .arrow {
+    width: 0; 
+    height: 0; 
+    border-left: $caret-size solid transparent;
+    border-right: $caret-size solid transparent;
+    
+    border-top: $caret-size solid $text-color;
+  }
+  
 
   ul {
     display: none;
@@ -293,7 +337,11 @@ header {
     // animation-fill-mode: both;
   }
 
-  a, a:hover { 
+  a { 
+    text-decoration: none;
+  }
+
+  a:hover { 
     text-decoration: underline;
   }
 
@@ -352,25 +400,135 @@ header {
   }
 }
 
-.post-list a {
-  color: $link-color;
+main {
+  flex: 1;
+  max-width: 70rem;
+  padding: $pad * 2;
+
+  &.wide { 
+    max-width: none;
+  }
+
+  h3, h4, h5, h6 { 
+    padding-top: 1em;
+    margin-bottom: 0;
+    position: relative;
+    // font-family: $base-font-family;
+    // font-weight: bold;
+  }
+
+  h2 + h3,
+  h3 + h4 { 
+    margin-top: 0;
+  }
+
+  a, a:hover {
+    text-decoration: underline;
+  }
+    
+  .header-link {
+    position: absolute;
+    left: -1em;
+    opacity: 0;
+    text-decoration: none;
+    font-weight: normal;
+  }
+  
+  h2:hover .header-link,
+  h3:hover .header-link,
+  h4:hover .header-link,
+  h5:hover .header-link,
+  h6:hover .header-link {
+    opacity: 1;
+  }
+
+  &.homepage {
+    h3 { 
+      font-size: 18px;
+      margin-bottom: 0;
+      margin-top: 1.5em;
+      padding-top: 0;
+    }
+
+    h2 {
+      margin-bottom: 0;
+    }
+
+    section + section { 
+      margin-top: 2em;
+    }
+
+    .header-link { 
+      display: none;
+    }
+  
+    .intros {
+      margin-bottom: $pad;
+
+      .two-up {
+        display: flex;
+      }
+      
+      h3, p:last-child { 
+        margin: 0;
+      }
+
+      .category { 
+        padding: $pad; 
+        background: $land;
+        flex: 1;
+      }
+    }
+  }
 }
 
-ul.post-list,
-.post-list li {
-  list-style: none;
-  text-indent: 0;
-  padding: 0;
+.sidebar {
+  flex: 0 0 300px;
+  padding-top: $pad;
+
+  // Table of contents 
+  .toc {
+    padding: $pad;
+    position: sticky;
+    top: 0;    
+
+    ul, li { 
+      list-style: none;
+      font-size: $small-font-size;
+      margin: 0;
+      padding: 0;
+    }
+
+    li { 
+      margin-bottom: 1em;
+    }
+
+    li ul { 
+      padding-left: $pad/2;
+      margin-top: 1em;
+      //border-left: 4px solid $land;
+    }
+
+  }
+}
+// This is the side nav
+.post-list {
   margin: 0;
-  line-height: 1.1;
+
+  li {
+    font-size: $small-font-size;
+
+    list-style: none;
+    text-indent: 0;
+    padding: 0;
+    margin: 0 0 1.5em $pad / 2;
+    line-height: 1.1;
+  }
 }
 
-ul.post-list {
-  margin-bottom: 2em;
-}
-
-.post-list li {
-  margin-bottom: 1em;
+.homepage .sidebar { 
+  margin-right: $pad;
+  margin-top: $pad;
 }
 
 footer {
@@ -388,6 +546,9 @@ footer {
     margin-top: 2em;
   }
 
+  .header-link { 
+    display: none;
+  }
 }
 
 table {
@@ -413,4 +574,39 @@ table {
     font-style: normal;
     font-size: 1.5rem;
    }
+}
+
+
+@media screen and (max-width: $on-palm) {
+  #content {
+    flex-direction: column-reverse;
+
+    &.homepage {
+      flex-direction: column;
+
+      .sidenav { 
+        display: none;
+      }
+    }
+
+    .sidenav {
+      max-width: inherit;
+    }
+
+    main {
+      padding: $pad - ($pad / 2);
+    }
+
+
+    .sidebar {
+      padding: $pad - ($pad / 2);
+      margin: 0;
+
+      flex: none;
+
+      .toc {
+        padding: 0;
+      }
+    }
+  }
 }

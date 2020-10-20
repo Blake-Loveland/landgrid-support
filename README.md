@@ -74,3 +74,14 @@ the prose config at the bottom of the file.
 ## Updating the schema 
 
 The schema lives at `_data/schema.yml`
+
+## Dev deployment 
+
+Using surge.sh:
+
+```
+jekyll build
+surge --domain ll-docs-dev.surge.sh _site/
+```
+
+with subdomain `ll-docs-dev`: ll-docs-dev.surge.sh
