@@ -87,7 +87,7 @@ Parcel attributes that have a null value are omitted from the results.
 
 ### By owner name
 
-Currently only matchest based on the start of the name string.
+Currently only matches based on the start of the name string.
 
 For example, if you are looking for a parcel owned by "Jones, Festus", you can search by 'jon', 'jone', 'jones', etc. Searchin for 'fest', 'festus', or etc. will not match the parcel.
 
