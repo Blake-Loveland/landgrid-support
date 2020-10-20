@@ -1,6 +1,6 @@
 ---
 weight: 0
-category: Your Landgrid Account
+category: Landgrid Mapping Platform
 published: false
 intro: How to upgrade or downgrade your current plan
 title: Change Your Subscription Plan

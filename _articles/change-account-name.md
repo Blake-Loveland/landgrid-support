@@ -1,6 +1,6 @@
 ---
 weight: 1
-category: Your Landgrid Account
+category: Landgrid Mapping Platform
 published: true
 intro: You can change the name of your account at any time
 title: Change Group Name or URL

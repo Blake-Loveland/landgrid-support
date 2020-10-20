@@ -1,6 +1,6 @@
 ---
 weight: 1
-category: Your Landgrid Account
+category: Landgrid Mapping Platform
 published: true
 intro: Inviting or Removing Collaborators from your Group
 title: Invite/Remove Collaborators

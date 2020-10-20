@@ -1,6 +1,6 @@
 ---
 weight: 1
-category: Your Landgrid Account
+category: Landgrid Mapping Platform
 published: true
 intro: You can customize the permission levels of people invited to your account
 title: User Permissions
