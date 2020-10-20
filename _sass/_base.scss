@@ -578,8 +578,21 @@ table {
 
 
 @media screen and (max-width: $on-palm) {
+  .nomobile {
+    display: none;
+  }
+
+  nav a {
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
   #content {
     flex-direction: column-reverse;
+
+    display: block;
+    flex: none;
 
     &.homepage {
       flex-direction: column;
