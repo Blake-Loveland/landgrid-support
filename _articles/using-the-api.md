@@ -10,7 +10,7 @@ Thank you for your interest in our Parcel API! Please direct feedback, bugs and 
 
 All requests are to the `https://landgrid.com` domain, with the paths described below per-request.
 
-You can searching by point (lat/lon), Parcel Number, or Parcel Street Address only. A partial owner name search is still in development and described below. The API does not yet support querying by polygons to get all of the parcels in the polygon.
+You can search by point (lat/lon), Parcel Number, or Parcel Street Address only. A partial owner name search is still a work in progress and described below. The API does not yet support querying by polygons to get all of the parcels in the polygon.
 
 All requests return a JSON response containing an array of GeoJSON features representing the matched parcels. An empty results set with no error means no parcels could be matched.
 
@@ -30,7 +30,9 @@ The `context` parameter is most important to provide when doing searches that ca
 
 All paths should be all lowercase characters.
 
-At Loveland we use place *pathnames* to specify administrative boundaries and uniquely describe a geographic region. This includes the country, state, county, and county subdivision. For example, `/us/mi/wayne/detroit` for Detroit or `/us/oh/hamilton` for Hamilton County, OH. If you're not sure what to use for your requests, browsing on [landgrid.com](https://landgrid.com/us) to the desired place and copying the path out of the URL is a good way to get started.
+At Loveland we use place *pathnames* to specify administrative boundaries and uniquely describe a geographic region. This includes the country, state, county, and county subdivision. For example, `/us/mi/wayne/detroit` for Detroit or `/us/oh/hamilton` for Hamilton County, OH. 
+
+If you're not sure what to use for your requests, browsing on [landgrid.com](https://landgrid.com/us) to the desired place and copying the path out of the URL is a good way to get started.
 
 #### Parcel paths
 
@@ -84,9 +86,7 @@ Parcel attributes that have a null value are omitted from the results.
 
 #### By owner name
 
-*This is an alpha search method and will change before release*
-
-Currently only matchest based on the start of the name string.
+Currently only matches based on the start of the name string.
 
 For example, if you are looking for a parcel owned by "Jones, Festus", you can search by 'jon', 'jone', 'jones', etc. Searchin for 'fest', 'festus', or etc. will not match the parcel.
 
