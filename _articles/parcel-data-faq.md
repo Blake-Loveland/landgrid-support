@@ -15,11 +15,23 @@ We source our data directly from each County or whom they designate as the offic
 
 Available County data means that we have confirmed the data is available from the County, but for some reason we did not obtain the data. The usual reason is cost from the County, some Counties  price their parcel data very high. If you are interested in any missing County, please let us know and we will update our research to confirm costs or other changes and work something out with you to obtain and standardize that data.
 
+#### Why do your parcel value fields ('parval') not look the way I expect?
+
+Our parcel value related fields are all directly from the County Assessor's data. We do not calculate of the parcel value related columns. We populate as directly from the Assessor attributes as possible our 'improvements value' (improvval), 'land value' (landval), 'parcel value' (parval), 'ag value' (agval)  and 'parcel valuation method' (parvaltype) attributes. However, while those are the most common value related attributes, every County has their own definition for those attributes and their own methods for how they calculate, record and display amounts for tax purposes. We can not answer questions about why the County records the values in those attributes. We suggest visting the County's website or calling the Assessor's office directly to better understand those values. If, after contacting the County it appears we have an error in what values we have in those attribute fields, please send an email to help@landgrid.com and we will review our data asap.
+
+#### Why do your parcel numbers (apn, pin, etc) not look the way I expect?
+
+County Assessor parcel identification numbers ('parcelnumb') are well known for being complicated and often have variable punctuation or zeros (0) that can affect searching or matching by parcel id number. Counties do occasionally change their method for generating or assigning parcel numbers and that can lead to "new" and "old" parcel number situations. We always retain any identification number attributes as 'County Custom Columns' so it should be possible to match up our data with County data directly, even if our parcel number field is not the only identification number used by the County.
+
+Also, sometimes a State GIS source will add their own unique id to a local parcel id number. 
+
+We suggest visiting the County's website or calling the Assessor's office directly to better understand their parcel numbering system. If, after contacting the County it appears we have an error in what values we have in our parcel id attribute field, please send an email to help@landgrid.com and we will review our data asap.
+
 #### Do you have "this" attribute for "this" County?
 
 A current, detailed list of every County in our data set and what data fields we have for each is always available at the following URL. This spreadsheet can be downloaded as a CSV for closer analysis:  [https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/](https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/)
 
-#### How do you standardize County data generally?**
+#### How do you standardize County data generally?
 
 The main way we make county data much easier to work with is by standardizing the column names of the raw data provided by each county. We do not standardize the values in most columns, most we keep those exactly as provided by the county, but we do make sure that every county in our system is converted to a standard table schema, with consistent column names across the nationwide dataset. Please see “What is the Loveland Landgrid Parcel Schema?” question below.
 
