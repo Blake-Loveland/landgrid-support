@@ -3,6 +3,7 @@ backend:
   name: github
   repo: loveland/landgrid-support # Path to your GitHub repository
   branch: gh-pages # Branch to update (optional; defaults to master)
+  site_domain: support.landgrid.com
 media_folder: 'img'
 collections:
   - name: 'articles'
