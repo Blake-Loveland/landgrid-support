@@ -1,4 +1,4 @@
-# Land Grid Support Site
+# Landgrid Support Site
 
 # Writing content using the Prose editor
 
@@ -80,3 +80,14 @@ The schema lives at `_data/schema.yml`
 
 We have installed the [Netlify CMS](https://www.netlifycms.org/) at `/admin`. 
 The config lives in `/admin/config.yml`. 
+
+## Dev deployment 
+
+Using surge.sh:
+
+```
+jekyll build
+surge --domain ll-docs-dev.surge.sh _site/
+```
+
+with subdomain `ll-docs-dev`: ll-docs-dev.surge.sh

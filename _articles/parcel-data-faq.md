@@ -5,7 +5,7 @@ published: true
 title: FAQs - Parcel Data
 ---
 
-## Frequently Asked Questions (FAQ) About Landgrid Parcel Data
+### Landgrid Parcel Data
 
 #### Where does your County data come from?
 
@@ -15,15 +15,31 @@ We source our data directly from each County or whom they designate as the offic
 
 Available County data means that we have confirmed the data is available from the County, but for some reason we did not obtain the data. The usual reason is cost from the County, some Counties  price their parcel data very high. If you are interested in any missing County, please let us know and we will update our research to confirm costs or other changes and work something out with you to obtain and standardize that data.
 
+#### Why do your parcel value fields ('parval') not look the way I expect?
+
+Our parcel value related fields are all directly from the County Assessor's data. We populate as directly from the Assessor attributes as possible our 'improvements value' (improvval), 'land value' (landval), 'parcel value' (parval), 'ag value' (agval)  and 'parcel valuation method' (parvaltype) attributes. However, while those are the most common value related attributes, every County has their own definition for those attributes and their own methods for how they calculate, record and display amounts for tax purposes. We can not answer questions about why the County records the values in those attributes. We suggest visting the County's website or calling the Assessor's office directly to better understand those values. If, after contacting the County it appears we have an error in what values we have in those attribute fields, please send an email to help@landgrid.com and we will review our data asap.
+
+#### Why do your parcel numbers (apn, pin, etc) not look the way I expect?
+
+County Assessor parcel identification numbers ('parcelnumb') are well known for being complicated and often have variable punctuation or zeros (0) that can affect searching or matching by parcel id number. Counties do occasionally change their method for generating or assigning parcel numbers and that can lead to "new" and "old" parcel number situations. We always retain any identification number attributes as 'County Custom Columns' so it should be possible to match up our data with County data directly, even if our parcel number field is not the only identification number used by the County.
+
+Also, sometimes a State GIS source will add their own unique id to a local parcel id number. 
+
+We suggest visiting the County's website or calling the Assessor's office directly to better understand their parcel numbering system. If, after contacting the County it appears we have an error in what values we have in our parcel id attribute field, please send an email to help@landgrid.com and we will review our data asap.
+
 #### Do you have "this" attribute for "this" County?
 
 A current, detailed list of every County in our data set and what data fields we have for each is always available at the following URL. This spreadsheet can be downloaded as a CSV for closer analysis:  [https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/](https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/)
 
-**How do you standardize County data generally?**
+#### How do you standardize County data generally?
 
 The main way we make county data much easier to work with is by standardizing the column names of the raw data provided by each county. We do not standardize the values in most columns, most we keep those exactly as provided by the county, but we do make sure that every county in our system is converted to a standard table schema, with consistent column names across the nationwide dataset. Please see “What is the Loveland Landgrid Parcel Schema?” question below.
 
 In addition, we further standardize the parcel address fields using the US Postal Service database of addresses. For details on address specific standardization please see the "How do you standardize and normalize addresses?" question below. 
+
+#### How do you deliver bulk data?
+
+All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county’s FIPS code (geoid in our Loveland Parcel Schema column).
 
 **What is the Loveland Landgrid Parcel Schema?**
 
@@ -67,21 +83,21 @@ A detailed listing of every County in our data set and the date we last refreshe
 
 **How do you provide data updates?**
 
-Monthly we update every data tier with the refreshed counties for the month, usually 100 - 300 counties per month.
+Monthly, we update every data tier with the refreshed counties for the month, usually 100 - 300 counties per month.
 
-Monthly premium attribute data tiers are updated for _every county in the data set_, because every county's USPS related attributes have been updated for the month.
+Monthly, premium attribute data tiers are updated for _every county in the data set_, because every county's USPS related attributes have been updated for the month.
 
-Quarterly, at the start of the calendar quarter, _every data tier will have every county exported_. We make improvements to the nationwide data set on a regular basis, often based on feedback from clients. Quartly, full data set exports ensure every data tier has all of the improvements across the data set, even if the data was not refreshed directly from the county that quarter. We do not maintain an easily sharable changelog for data set wide fixes, but give a notice to significant ones in our monthly data update emails.
+Quarterly, at the start of the calendar quarter, _every data tier will have every county exported_. We make improvements to the nationwide data set on a regular basis, often based on feedback from clients. Quarterly, full data set exports ensure every data tier has all of the improvements across the data set, even if the data was not refreshed directly from the county that quarter. We are working to provide an easily sharable changelog for data set wide fixes, but currently give a notice to significant updates in our monthly data update emails.
+
+Each month we replace the existing county zip file in a client's download directory with the refreshed county files. We do not provide 'diff' files or deltas for the data at this time.
 
 All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county's FIPS code (`geoid` in our Loveland Landgrid Parcel Schema column). We add or refresh 100 - 300 counties every month with data from the county source.
-
-Each month we replace the existing county zip file in a client's download directory with the refreshed county files.
 
 We send out an email each month listing the counties that were refreshed, as well as an updated listing of all the counties and their `last_refresh` date, which is the last date we updated the data directly from the source.
 
 We also provide a CSV file of our VERSE table that lists the `last_refresh` date for each county.
 
-On each parcel we provide a `'ll_uuid` number that permanently and uniquely identifies each parcel across data refreshes and updates. The `ll_uuid` can be used to match any locally stored parcels with updated parcels in the county file.
+On each parcel we provide a `ll_uuid` number that permanently and uniquely identifies each parcel across data refreshes and updates. The `ll_uuid` can be used to match any locally stored parcels with updated parcels in the county file.
 
 We also make improvements to the data that does not come directly from the county, like standardizing addresses, cleaning out non-standard characters, adding additional data attributes, etc. We generally re-export our full dataset quarterly to reflect those changes. Improvements we make to data does NOT affect the `last_refresh` of a county, that is always the date we last pulled data directly from the county source. Notices of full dataset exports are also included in the monthly email update sent to all clients.
 
@@ -111,6 +127,18 @@ Where counties have not provided full addresses for parcels, we use US Census da
 Parcel addresses are then passed through a USPS address verification system which further normalizes and standardizes the address to USPS guidelines where a match was made against the USPS database of addresses. Non matching address are left as they were sent by the County.
 
 The original County provided raw address data is always retained unaltered and included on the parcel record.
+
+#### What software can I use to work with your data?
+
+Editing or working with most of our data requires software for working with geographic and geospatial data The OSGeo project provides [free and open source desktop software to work this kind of data called QGIS](https://qgis.org/).
+
+There are other free and paid software options for working with geospatial data, but all of it has a learning curve. We are not able to provide support for those 3rd party softare applications. For QGIS at least, the best options for learning are via the many community developed tutorial videos and texts. 
+
+We suggest starting with the GeoPackage (geoPKG, .gpkg) formatted files to use in QGIS or any geospatial software.
+
+#### What about Google Earth?
+
+We provide KML/KMZ options for Google Earth and Google Earth Pro, but neither of those applications support editing our data, only viewing the data. If you need to make changes to the data you get from us, you will need a desktop application like QGIS discussed above.
 
 **How do you load all of these files into a database?**
 
@@ -174,7 +202,7 @@ Please contact us at help@landgrid.com if you find issues, or have any questions
 
 We projected each parcel and building footprint into its UTM Zone SRS, calculated the area in meters and converted that to acres and sqft. This should provide a relatively uniform and consistent value across the US.
 
-## API Access
+### API Access
 
 **What is an API and why might I use one?**
 
@@ -201,7 +229,7 @@ Windows users can use [WinSCP](https://winscp.net/), which also supports [script
 MacOS users can use [CyberDuck](https://cyberduck.io/)
 
 
-## LBCS - Usecode Classification
+### LBCS - Usecode Classification
 
 **What is LBCS?**
 

@@ -1,6 +1,6 @@
 ---
 weight: 0
-category: Getting Started
+category: Landgrid Data
 published: true
 title: USPS Data on the Landgrid Platform & App
 ---

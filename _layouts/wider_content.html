@@ -2,28 +2,11 @@
 layout: default
 ---
 
-<div class="col-sm-3">
-  <div class="sidenav">
-    {% include search.html %}
+{% include sidenav.html %}
 
-    {% for category in site.category-list %}
-      <div class="category {% if page.category == category %}active{% endif %}">
-        <h2>{{category}}</h2>
-        <ul class="post-list">
-          {% assign articles = site.articles | where: 'category', category %}
-          {% assign articles = articles | sort: 'weight' %}
-          {% for article in articles %}
-            <li>
-                <a class="post-link" href="{{ site.baseurl }}{{ article.url | prepend: article.baseurl }}">{{ article.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endfor %}
-  </div>
-</div>
-
-<div class="col-sm-9">
+<main id="main" class="wide">
   <h2>{{ page.title }}</h2>
   {{ content }}
-</div>
+</main>
+
+

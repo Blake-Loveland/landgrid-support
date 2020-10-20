@@ -1,6 +1,6 @@
 ---
 weight: 5
-category: Your Account
+category: Landgrid Mapping Platform
 published: true
 intro: How to cancel your account
 title: Cancelling Your Account

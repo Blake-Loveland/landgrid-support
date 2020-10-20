@@ -1,5 +1,5 @@
 ---
-weight: 0
+weight: 10
 category: Data and API
 published: true
 title: "Data Customer Support - SLA & Guidelines"
