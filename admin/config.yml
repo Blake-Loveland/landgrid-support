@@ -1,0 +1,42 @@
+# Config for the netlify CMS: https://www.netlifycms.org/docs/intro/
+backend:
+  name: github
+  repo: loveland/landgrid-support # Path to your GitHub repository
+  branch: gh-pages # Branch to update (optional; defaults to master)
+media_folder: 'img'
+collections:
+  - name: 'articles'
+    label: 'Article'
+    folder: '_articles/'
+    create: true # Can create new ones
+    fields: 
+      # Note that these fields should follow the config under `prose` in /config.yml:
+      - { label: "Title", name: 'title', widget: 'string' }
+      - { label: "Intro", name: 'intro', widget: 'string', required: false }
+      - 
+        label: 'Weight'
+        name: 'weight'
+        widget: 'number'
+        value_type: 'int'
+        required: false
+        hint: "Number representing how 'heavy' the article is. Heavier articles sink further down the list"
+      - 
+        label: 'Category'
+        name: 'category'
+        widget: 'select'
+        options:
+          - label: "Getting Started"
+            value: "Getting Started"
+          - label: "Projects"
+            value: "Projects"
+          - label: "Landgrid Mapping Platform"
+            value: "Landgrid Mapping Platform"
+          - label: "Adding Data"
+            value: "Adding Data"
+          - label: "Managing Data"
+            value: "Managing Data"
+          - label: "Surveying"
+            value: "Surveying"
+          - label: "Data and API"
+            value: "Data and API"
+      - {label: "Body", name: "body", widget: "markdown"}

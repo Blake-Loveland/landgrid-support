@@ -1,4 +1,4 @@
-# Land Grid Support Site
+# Landgrid Support Site
 
 # Writing content using the Prose editor
 
@@ -69,11 +69,17 @@ Templates are in the root directory. The generated site is in `/_site`.
 ## Categories
 
 Edit these in `_config.yml`. You'll need to edit the `category-list` up top and
-the prose config at the bottom of the file.
+the prose config at the bottom of the file. You will also need to update
+the category list in `admin/config.yml` 
 
 ## Updating the schema 
 
 The schema lives at `_data/schema.yml`
+
+## Netlify editor
+
+We have installed the [Netlify CMS](https://www.netlifycms.org/) at `/admin`. 
+The config lives in `/admin/config.yml`. 
 
 ## Dev deployment 
 
