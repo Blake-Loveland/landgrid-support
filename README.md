@@ -85,12 +85,3 @@ surge --domain ll-docs-dev.surge.sh _site/
 ```
 
 with subdomain `ll-docs-dev`: ll-docs-dev.surge.sh
-
-# Redesign todos: 
-- X Schema page
-- Code wrapping 
-- X Mobile
-- X Homepage
-- X Make top navigation easier 
-- X Caret for menus
-- X Paras in footer
