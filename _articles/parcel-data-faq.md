@@ -15,6 +15,22 @@ We source our data directly from each County or whom they designate as the offic
 
 Available County data means that we have confirmed the data is available from the County, but for some reason we did not obtain the data. The usual reason is cost from the County, some Counties  price their parcel data very high. If you are interested in any missing County, please let us know and we will update our research to confirm costs or other changes and work something out with you to obtain and standardize that data.
 
+#### How do you standardize County data generally?
+
+The main way we make county data much easier to work with is by standardizing the column names of the raw data provided by each county. We do not standardize the values in most columns, most we keep those exactly as provided by the county, but we do make sure that every county in our system is converted to a standard table schema, with consistent column names across the nationwide dataset. Please see “What is the Loveland Landgrid Parcel Schema?” question below.
+
+In addition, we further standardize the parcel address fields using the US Postal Service database of addresses. For details on address specific standardization please see the "How do you standardize and normalize addresses?" question below. 
+
+#### How do you deliver bulk data?
+
+All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county’s FIPS code (geoid in our Loveland Parcel Schema column).
+
+**What is the Loveland Landgrid Parcel Schema?**
+
+We standardize column names for easy access across counties in our nationwide dataset in to our Loveland Landgrid Parcel Schema for tables.
+
+We are currently at version 6 of our Loveland Landgrid Parcel Schema and it standardizes the column names for approximately 80 county provided data columns, and 25 Landgrid provided data columns. This schema is applied to 100% of our dataset. A data dictionary is available: [https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424)
+
 #### Why do your parcel value fields ('parval') not look the way I expect?
 
 Our parcel value related fields are all directly from the County Assessor's data. We populate as directly from the Assessor attributes as possible our 'improvements value' (improvval), 'land value' (landval), 'parcel value' (parval), 'ag value' (agval)  and 'parcel valuation method' (parvaltype) attributes. However, while those are the most common value related attributes, every County has their own definition for those attributes and their own methods for how they calculate, record and display amounts for tax purposes. We can not answer questions about why the County records the values in those attributes. We suggest visting the County's website or calling the Assessor's office directly to better understand those values. If, after contacting the County it appears we have an error in what values we have in those attribute fields, please send an email to help@landgrid.com and we will review our data asap.
@@ -31,21 +47,6 @@ We suggest visiting the County's website or calling the Assessor's office direct
 
 A current, detailed list of every County in our data set and what data fields we have for each is always available at the following URL. This spreadsheet can be downloaded as a CSV for closer analysis:  [https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/](https://docs.google.com/spreadsheets/d/1q0PZB72nO8935EMGmsh3864VjEAMUE-pdHcPkoAiS5c/)
 
-#### How do you standardize County data generally?
-
-The main way we make county data much easier to work with is by standardizing the column names of the raw data provided by each county. We do not standardize the values in most columns, most we keep those exactly as provided by the county, but we do make sure that every county in our system is converted to a standard table schema, with consistent column names across the nationwide dataset. Please see “What is the Loveland Landgrid Parcel Schema?” question below.
-
-In addition, we further standardize the parcel address fields using the US Postal Service database of addresses. For details on address specific standardization please see the "How do you standardize and normalize addresses?" question below. 
-
-#### How do you deliver bulk data?
-
-All bulk data is provided via SFTP as zip files of each county in the format of your choice (GeoJSON, NDGeoJSON, SQL, Shapefile, FileGDB, GeoPackage, KML, CSV), using a pull model. We organize things on a county by county basis using the county’s FIPS code (geoid in our Loveland Parcel Schema column).
-
-**What is the Loveland Landgrid Parcel Schema?**
-
-We standardize column names for easy access across counties in our nationwide dataset in to our Loveland Landgrid Parcel Schema for tables.
-
-We are currently at version 6 of our Loveland Landgrid Parcel Schema and it standardizes the column names for approximately 80 county provided data columns, and 25 Landgrid provided data columns. This schema is applied to 100% of our dataset. A data dictionary is available: [https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424](https://docs.google.com/spreadsheets/d/14RcBKyiEGa7q-SR0rFnDHVcovb9uegPJ3sfb3WlNPc0/edit#gid=1010834424)
 
 **Why do my files have columns not in the Loveland Landgrid Parcel Schema?**
 
