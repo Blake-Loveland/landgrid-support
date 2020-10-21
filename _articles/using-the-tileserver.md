@@ -12,13 +12,13 @@ Please direct feedback, bugs and questions to [help@landgrid.com](mailto:help@la
 
 ## Tileserver API
 
-All requests will be to the `https://tiles.makeloveland.com` domain, with the paths described below per-request.
+### Endpoint
+
+All requests will be to the `https://tiles.makeloveland.com` domain, with the paths described below per request.
 
 ### Authentication and tokens
 
-All requests to the Tileserver API must include a `token` parameter. The same Loveland/Landgrid API Tokens can be used for all of our APIs. If you have a working token for any Landgrid API, that token will work for all our APIs, including our Tileserver.
-
-Please contact us via [team@landgrid.com](mailto:team@landgrid.com) to get an API Token if you do not have one yet.
+All requests to the API must include a `token` parameter. If you have an API subscription or Loveland data license, you can find this in **Account Settings > Preferences** after logging into your account at [landgrid.com](landgrid.com). The same Landgrid API tokens can be used for all of our APIs.
 
 ### Standard parcel tiles
 
@@ -37,7 +37,9 @@ Our TileJSON includes the required "tiles" endpoint array. The url(s) in that ke
 
 The base tile path is `/api/v1/parcels/{z}/{x}/{y}.format`. Supported formats are `mvt`, `png`, and `json` ([for UTF grids](https://blog.mapbox.com/how-interactivity-works-with-utfgrid-3b7d437f9ca9)). PNG tiles are provided with the default loveland style.
 
-#### Leaflet raster layer example
+#### Using tiles in your app
+
+##### Leaflet raster layer example
 
 To add raster tiles to a Leaflet map:
 
@@ -47,7 +49,7 @@ L.tileLayer(
 ).addTo(map)
 ```
 
-#### Mapbox GL JS vector example
+##### Mapbox GL JS vector example
 
 ```
 <html>
@@ -127,7 +129,7 @@ L.tileLayer(
 </html>
 ```
 
-#### ArcGIS Online (AGOL)
+##### ArcGIS Online (AGOL)
 
 ArcGISOnline TiledLayer works with our raster tile layer, but the `{z}/{x}/{y}` of our urls needs to be changed to the literal text string that looks like this: `{level}/{col}/{row}`
 
@@ -137,7 +139,7 @@ You literally leave those `level`, `col`, and `row` words in there instead of th
 AGSWebTiledLayer(urlTemplate: "https://tiles.makeloveland.com/api/v1/parcels/{level}/{col}/{row}.png?token=
 ```
 
-#### ArcGIS Desktop
+##### ArcGIS Desktop
 
 ArcGIS Desktop products only support Esri based vector tile layers. However, ArcGIS Desktop users can also use our raster tiles for integrations using the same template as ArcGIS Online: 
 
@@ -271,5 +273,4 @@ $.ajax({
 
 ##### Custom vector map styles
 
-Vector maps are styled client-side, and do not require a custom layer. Your mapping platform (for example, Mapbox GL or Tangram) will have detailed documentation on how to style data. 
-
+Vector maps are styled client-side, and do not require a custom layer. Your mapping platform (for example, Mapbox GL or Tangram) will have detailed documentation on how to style data.
