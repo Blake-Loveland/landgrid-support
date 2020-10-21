@@ -22,7 +22,7 @@ All requests return a JSON response containing an array of GeoJSON features repr
 
 ### Limits
 
-Rates are limited to 10 simultaneous requests or approximately 5,000 requests per hour. Additional capacity is available; please contact our sales team at [parcels@landgrid.com](mailto:parcels@landgrid.com) for details. 
+Rates are limited to 10 simultaneous requests or approximately 180 requests per minute. Additional capacity is available; please contact our sales team at [parcels@landgrid.com](mailto:parcels@landgrid.com) for details. 
 
 #### Authentication and tokens
 
