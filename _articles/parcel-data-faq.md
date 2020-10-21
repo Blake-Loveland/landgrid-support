@@ -141,7 +141,7 @@ We suggest starting with the GeoPackage (geoPKG, .gpkg) formatted files to use i
 
 We provide KML/KMZ options for Google Earth and Google Earth Pro, but neither of those applications support editing our data, only viewing the data. If you need to make changes to the data you get from us, you will need a desktop application like QGIS discussed above.
 
-**How do you load all of these files into a database?**
+#### How do you load all of these files into a database?
 
 We generally work in a GNU/Linux environment using the command line. Our internal workflow makes use of the OSGeo Foundation libraries and tools including GDAL/OGR and PostGIS for PostgreSQL. The OSGeo project also provides an MS Windows 10 installer for using the tools on a Windows machine named [OSGeo4Win](https://trac.osgeo.org/osgeo4w/).
 
