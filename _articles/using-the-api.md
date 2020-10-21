@@ -6,21 +6,27 @@ intro: How developers can use the Loveland parcel API
 title: Using the API
 ---
 
-Thank you for your interest in our Parcel API! Please direct feedback, bugs and questions to **help@landgrid.com**.
+Thank you for your interest in our Parcel API! Please direct feedback, bugs and questions to **[help@landgrid.com](mailto:help@landgrid.com)**.
 
-All requests are to the `https://landgrid.com` domain, with the paths described below per-request.
-
-You can search by point (lat/lon), Parcel Number, or Parcel Street Address only. A partial owner name search is still a work in progress and described below. The API does not yet support querying by polygons to get all of the parcels in the polygon.
-
-All requests return a JSON response containing an array of GeoJSON features representing the matched parcels. An empty results set with no error means no parcels could be matched.
-
-Rates are limited to 10 simultaneous requests or approximately 5,000 requests per hour. Additional rates are available by speaking with a salesperson.
+The Parcel API supports searching by location (lat/lon), parcel number (APN), or parcel street address. A partial owner name search is still a work in progress and described below. The API does not yet support querying by polygons to get all of the parcels in the polygon, or queries by other attributes. Have a specific need in mind you don't see covered here? Please reach out to our team with details.
 
 ### General concepts
 
+#### Endpoint
+
+All requests are to the `https://landgrid.com` domain, with the paths described below per request.
+
+### Responses 
+
+All requests return a JSON response containing an array of GeoJSON features representing the matched parcels. An empty results set with no error means no parcels could be matched.
+
+### Limits
+
+Rates are limited to 10 simultaneous requests or approximately 5,000 requests per hour. Additional capacity is available; please contact our sales team at [parcels@landgrid.com](mailto:parcels@landgrid.com) for details. 
+
 #### Authentication and tokens
 
-All requests to the API must include a `token` parameter. If you have a Loveland data license, you can find this in **Account Settings > Preferences** after logging into your account at landgrid.com.
+All requests to the API must include a `token` parameter. If you have an API subscription or Loveland data license, you can find this in **Account Settings > Preferences** after logging into your account at landgrid.com.
 
 #### Place paths for context (narrowing searches by area)
 
