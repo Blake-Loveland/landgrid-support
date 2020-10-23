@@ -59,9 +59,10 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 * `lon`: Longitude (x-coord), same.
 
 **To return all parcels in a radius of a point:**
+* `radius` (optional): Give a radius in meters for which all parcels will be returned if they are within a definable radius from the lat-long point. Default radius is 50, maximum 500. No need to include the 'm' for meters, just the integer value between 0 and 500.
 * `nearest`: Pass `1` to return parcels within a radius instead of an exact match at the lat-long.
 * `limit` (optional): Maximum number of results to return.
-* `radius` (optional): Give a radius in meters to search within. Default 50, maximum 500
+
 
 `GET /api/v1/search.json?lat=<y>&lon=<x>&nearest=1&radius=<meters>&token=<token>`
 
