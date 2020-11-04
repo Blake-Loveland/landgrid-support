@@ -49,6 +49,12 @@ L.tileLayer(
 ).addTo(map)
 ```
 
+##### Leaflet vector layer plug-ins
+
+[Leaflet 0.7 and 1.x support mapbox vector tiles via plugins.](https://leafletjs.com/plugins.html#vector-tiles)
+
+We do not currently have any feedback or experience with this solution so can not offer any advice.
+
 ##### Mapbox GL JS vector example
 
 ```
