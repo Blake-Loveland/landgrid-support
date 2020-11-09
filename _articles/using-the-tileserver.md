@@ -185,7 +185,7 @@ The basic order of operations to create a custom layer is:
 The JSON for a layer definition has these parameters:
 
 - `query`: Set to `parcel: true` to select parcel data (basically always used as in example below)
-- `fields` (optional): A list of [Loveland Parcel Schema attributes](/articles/schema) to include. By default, vector tiles include `address`, `owner`, and `path`
+- `fields` (option available for vector tiles only): A list of [Loveland Parcel Schema attributes](/articles/schema) to include. By default, vector tiles include `address`, `owner`, and `path`
 - `styles` (optional): A string of [CartoCSS styles](https://carto.com/developers/styling/cartocss/) (see "composing styles" below). We apply a set of default Loveland styles if you don't specify any
 
 **Sample request body:**
