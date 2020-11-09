@@ -14,13 +14,15 @@ Please direct feedback, bugs and questions to [help@landgrid.com](mailto:help@la
 
 ### Endpoint
 
-All requests will be to the `https://tiles.makeloveland.com` domain, with the paths described below per request.
+All tileserver requests will be to the `https://tiles.makeloveland.com` domain, with the paths described below per request.
 
 ### Authentication and tokens
 
-All requests to the API must include a `token` parameter. If you have an API subscription or Loveland data license, you can find this in **Account Settings > Preferences** after logging into your account at [landgrid.com](landgrid.com). The same Landgrid API tokens can be used for all of our APIs.
+All requests to the tileserver API must include a `token` parameter. If you have a Parcel or Tileserver API subscription, you can find your token in **Account Settings > Billing or API sections** after logging into your account at [landgrid.com](landgrid.com).
 
-### Standard parcel tiles
+A single Landgrid API token can be used for our Parcel API and our Tileserver API, but each must be enabled separately.
+
+### Parcel tiles
 
 Landgrid provides a styleable, seamless, nationwide layer of parcel outlines in vector ([MVT](https://www.mapbox.com/vector-tiles/specification/)) and raster (PNG) formats.
 
@@ -144,6 +146,7 @@ You literally leave those `level`, `col`, and `row` words in there instead of th
 ```
 AGSWebTiledLayer(urlTemplate: "https://tiles.makeloveland.com/api/v1/parcels/{level}/{col}/{row}.png?token=
 ```
+![2020-11-02_08h39_49.png]({{site.baseurl}}/img/2020-11-02_08h39_49.png)
 
 ##### ArcGIS Desktop
 
@@ -152,6 +155,7 @@ ArcGIS Desktop products only support Esri based vector tile layers. However, Arc
 ```
 https://tiles.makeloveland.com/api/v1/parcels/{level}/{col}/{row}.png?token=
 ```
+![2020-11-02_08h41_10.png]({{site.baseurl}}/img/2020-11-02_08h41_10.png)
 
 ### Custom layers
 
