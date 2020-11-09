@@ -159,16 +159,18 @@ https://tiles.makeloveland.com/api/v1/parcels/{level}/{col}/{row}.png?token=
 
 ### Custom layers
 
-You can create a custom Layer to get tiles with custom styles and data returned.
+You can create a custom Layer to get tiles with custom display styles and data returned. Customzied parcel attributes returned is only available in the Mapbox Vector Tiles (.mvt) format.
 
-A Layer defines the set of data and, for raster tiles, styles, that you get in a tile. Each layer has a unique ID. Each unqiue set of styles, fields, and queries defines new layer -- you cannot edit existing layers, just create new ones.
+A Layer defines the set of data attributes returned in the vector tiles and line styling for raster tiles. 
+
+Each layer has a unique ID. Each unqiue set of styles, fields, and queries defines new layer -- you cannot edit existing layers, just create new ones.
 
 #### How to create a custom layer
 
 The basic order of operations to create a custom layer is:
 
-1. POST JSON to define the styles or custom data for the layer.
-2. Read the response TileJSON to get the new layer's url(s).
+1. POST JSON formatted text to define the styles or custom data (vector tiles only) for a new layer.
+2. Read the response that is formatted in TileJSON to get the new layer's url(s).
 3. Use the urls specified in the response on your map.
 
 ##### Layer creation endpoint
@@ -182,8 +184,8 @@ The basic order of operations to create a custom layer is:
 
 The JSON for a layer definition has these parameters:
 
-- `query`: Set to `parcel: true` to select parcel data
-- `fields` (optional): A list of [standard schema columns](/articles/schema) to include. By default, tiles include `address`, `owner`, and `path`
+- `query`: Set to `parcel: true` to select parcel data (basically always used as in example below)
+- `fields` (optional): A list of [Loveland Parcel Schema attributes](/articles/schema) to include. By default, vector tiles include `address`, `owner`, and `path`
 - `styles` (optional): A string of [CartoCSS styles](https://carto.com/developers/styling/cartocss/) (see "composing styles" below). We apply a set of default Loveland styles if you don't specify any
 
 **Sample request body:**
