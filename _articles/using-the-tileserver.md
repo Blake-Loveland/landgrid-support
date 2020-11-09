@@ -165,6 +165,10 @@ A Layer defines the set of data attributes returned in the vector tiles and line
 
 Each layer has a unique ID. Each unqiue set of styles, fields, and queries defines new layer -- you cannot edit existing layers, just create new ones.
 
+#### Endpoint
+
+All tileserver requests will be to the `https://tiles.makeloveland.com` domain, with the paths described below per request.
+
 #### How to create a custom layer
 
 The basic order of operations to create a custom layer is:
