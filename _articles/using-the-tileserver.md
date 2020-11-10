@@ -14,13 +14,15 @@ Please direct feedback, bugs and questions to [help@landgrid.com](mailto:help@la
 
 ### Endpoint
 
-All requests will be to the `https://tiles.makeloveland.com` domain, with the paths described below per request.
+All tileserver requests will be to the `https://tiles.makeloveland.com` domain, with the paths described below per request.
 
 ### Authentication and tokens
 
-All requests to the API must include a `token` parameter. If you have an API subscription or Loveland data license, you can find this in **Account Settings > Preferences** after logging into your account at [landgrid.com](landgrid.com). The same Landgrid API tokens can be used for all of our APIs.
+All requests to the tileserver API must include a `token` parameter. If you have a Parcel or Tileserver API subscription, you can find your token in **Account Settings > Billing or API sections** after logging into your account at [landgrid.com](landgrid.com).
 
-### Standard parcel tiles
+A single Landgrid API token can be used for our Parcel API and our Tileserver API, but each must be enabled separately.
+
+### Parcel tiles
 
 Landgrid provides a styleable, seamless, nationwide layer of parcel outlines in vector ([MVT](https://www.mapbox.com/vector-tiles/specification/)) and raster (PNG) formats.
 
@@ -48,6 +50,12 @@ L.tileLayer(
   'https://tiles.makeloveland.com/api/v1/parcels/{z}/{x}/{y}.png?token='
 ).addTo(map)
 ```
+
+##### Leaflet vector layer plug-ins
+
+[Leaflet 0.7 and 1.x support mapbox vector tiles via plugins.](https://leafletjs.com/plugins.html#vector-tiles)
+
+We do not currently have any feedback or experience with this solution so can not offer any advice.
 
 ##### Mapbox GL JS vector example
 
@@ -138,6 +146,7 @@ You literally leave those `level`, `col`, and `row` words in there instead of th
 ```
 AGSWebTiledLayer(urlTemplate: "https://tiles.makeloveland.com/api/v1/parcels/{level}/{col}/{row}.png?token=
 ```
+![2020-11-02_08h39_49.png]({{site.baseurl}}/img/2020-11-02_08h39_49.png)
 
 ##### ArcGIS Desktop
 
@@ -146,19 +155,26 @@ ArcGIS Desktop products only support Esri based vector tile layers. However, Arc
 ```
 https://tiles.makeloveland.com/api/v1/parcels/{level}/{col}/{row}.png?token=
 ```
+![2020-11-02_08h41_10.png]({{site.baseurl}}/img/2020-11-02_08h41_10.png)
 
 ### Custom layers
 
-You can create a custom Layer to get tiles with custom styles and data returned.
+You can create a custom Layer to get tiles with custom display styles and data returned. Customzied parcel attributes returned is only available in the Mapbox Vector Tiles (.mvt) format.
 
-A Layer defines the set of data and, for raster tiles, styles, that you get in a tile. Each layer has a unique ID. Each unqiue set of styles, fields, and queries defines new layer -- you cannot edit existing layers, just create new ones.
+A Layer defines the set of data attributes returned in the vector tiles and line styling for raster tiles. 
+
+Each layer has a unique ID. Each unqiue set of styles, fields, and queries defines new layer -- you cannot edit existing layers, just create new ones.
+
+#### Endpoint
+
+All tileserver requests will be to the `https://tiles.makeloveland.com` domain, with the paths described below per request.
 
 #### How to create a custom layer
 
 The basic order of operations to create a custom layer is:
 
-1. POST JSON to define the styles or custom data for the layer.
-2. Read the response TileJSON to get the new layer's url(s).
+1. POST JSON formatted text to define the styles or custom data (vector tiles only) for a new layer.
+2. Read the response that is formatted in TileJSON to get the new layer's url(s).
 3. Use the urls specified in the response on your map.
 
 ##### Layer creation endpoint
@@ -172,8 +188,8 @@ The basic order of operations to create a custom layer is:
 
 The JSON for a layer definition has these parameters:
 
-- `query`: Set to `parcel: true` to select parcel data
-- `fields` (optional): A list of [standard schema columns](/articles/schema) to include. By default, tiles include `address`, `owner`, and `path`
+- `query`: Set to `parcel: true` to select parcel data (basically always used as in example below)
+- `fields` (option available for vector tiles only): A list of [Loveland Parcel Schema attributes](/articles/schema) to include. By default, vector tiles include `address`, `owner`, and `path`
 - `styles` (optional): A string of [CartoCSS styles](https://carto.com/developers/styling/cartocss/) (see "composing styles" below). We apply a set of default Loveland styles if you don't specify any
 
 **Sample request body:**
