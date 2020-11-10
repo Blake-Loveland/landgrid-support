@@ -293,7 +293,7 @@ header {
   }
 }
 
-.sidenav {
+#content .sidenav {
   max-width: 300px;
   background: $land;
   padding: $pad;
@@ -303,6 +303,16 @@ header {
       $base-font-family;
     font-weight: 700;
     cursor: pointer;
+
+    a, a:link, a:active, a:hover, a:visited {
+      color: $text-color;
+      text-decoration: none;
+
+      .fas {
+        font-size: .8em;
+        color: #999;
+      }
+    }
   }
 
   $caret-size: 4px;
