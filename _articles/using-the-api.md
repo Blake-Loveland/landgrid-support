@@ -71,7 +71,7 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 `GET /api/v1/search.json?query=<address>&context=<path>&token=<token>`
 
 **Request parameters:**
-* `query`: The address to look up
+* `query`: The [URL Encoded](https://www.w3schools.com/tags/ref_urlencode.ASP) address to look up
 * `context` (optional): See notes on `context` parameter above
 * `limit` (optional): Maximum number of results to return.
 * `strict` (optional): Set `strict=1` to only return results in the `context`.
