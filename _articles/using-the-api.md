@@ -20,6 +20,8 @@ All requests are to the `https://landgrid.com` domain, with the paths described 
 
 All requests return a JSON response containing an array of GeoJSON features representing the matched parcels. An empty results set with no error means no parcels could be matched.
 
+You may get multiple parcel recorders per response. This depends on how you search for parcels via our Parcel API. Address matching, parcel number, owner name matching, parcels in a radius are all example of Parcel API requests that will likely return multiple Parcel Records in each response.
+
 ### Limits
 
 Rates are limited to 10 simultaneous requests or approximately 180 requests per minute. Additional capacity is available; please contact our sales team at [parcels@landgrid.com](mailto:parcels@landgrid.com) for details. 
