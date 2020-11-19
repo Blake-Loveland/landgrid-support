@@ -18,7 +18,7 @@ All requests are to the `https://landgrid.com` domain, with the paths described 
 
 ### Responses 
 
-All requests return a JSON response containing an array of GeoJSON features representing the matched parcels. An empty results set with no error means no parcels could be matched.
+All requests return a JSON response containing an array of GeoJSON features each containing the matched Parcel Records. An empty results set with no error means no Parcel Records could be matched.
 
 You may get multiple Parcel Records per response. This depends on how you search for parcels via our Parcel API. Address matching, parcel number, owner name matching, parcels in a radius are all example of Parcel API requests that will likely return multiple Parcel Records in each response.
 
