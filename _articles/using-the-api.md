@@ -217,3 +217,12 @@ POST https://landgrid.com/api/v1/report.json?token=YOUR_TOKEN_HERE
   }
 }
 ```
+
+### Platform / Library Specific Notes
+
+#### Shapely
+
+To create a [shapely](https://pypi.org/project/Shapely/) shape in Python from the array of coordinates that come as part of the GeoJSON response from the API, the coordinates list can not be passed into a MultiPolygon or Polygon constructor or it may return an error.
+
+Instead try `import shape from shapely.geometry` and pass in the geojson response to that. The shapely library might have issues instantiating shapes from a list of coordinates versus directly from a geojson the other ways.
+
