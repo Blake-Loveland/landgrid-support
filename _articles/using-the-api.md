@@ -10,21 +10,24 @@ Thank you for your interest in our Parcel API! Please direct feedback, bugs and 
 
 The Parcel API supports searching by location (lat/lon), parcel number (APN), or parcel street address. A partial owner name search is still a work in progress and described below. The API does not yet support querying by polygons to get all of the parcels in the polygon, or queries by other attributes. Have a specific need in mind you don't see covered here? Please reach out to our team with details.
 
-### General concepts
+### General Introduction
 
 #### Endpoint
 
-All requests are to the `https://landgrid.com` domain, with the paths described below per request.
+All requests are to the `https://landgrid.com/` domain, with the paths described below per request.
 
-### Responses 
+#### Responses 
 
-All requests return a JSON response containing an array of GeoJSON features each containing the matched Parcel Records. An empty results set with no error means no Parcel Records could be matched.
+All requests return a [GeoJSON](https://geojson.org/) response containing an array of [GeoJSON](https://geojson.org/) features each containing the matched Parcel Records. An empty results set with no error means no Parcel Records could be matched.
 
 You may get multiple Parcel Records per response. This depends on how you search for parcels via our Parcel API. Address matching, parcel number, owner name matching, parcels in a radius are all example of Parcel API requests that will likely return multiple Parcel Records in each response.
 
-### Limits
+#### Limit Parcel Records returned
+Each Parcel API request can return one or more Parcel Records. 
 
-Rates are limited to 10 simultaneous requests or approximately 180 requests per minute. Additional capacity is available; please contact our sales team at [parcels@landgrid.com](mailto:parcels@landgrid.com) for details. 
+#### API Request Rates
+
+Rates are limited to 10 simultaneous requests or approximately 5,000 requests per hour. Additional capacity is available; please contact our sales team at [parcels@landgrid.com](mailto:parcels@landgrid.com) for details. 
 
 #### Authentication and tokens
 
@@ -48,7 +51,7 @@ If you're not sure what to use for your requests, browsing on [landgrid.com](htt
 
 Note: Eventually these will be replaced functionally with the `ll_uuid`, but at this time, the parcel `path` is the best identifier to use with the API once you have found a parcel by one of the search methods.
 
-### Parcel search
+### Parcel API search
 
 #### By lat-long (reverse geocoding)
 
@@ -107,7 +110,7 @@ For example, if you are looking for a parcel owned by "Jones, Festus", you can s
 * `limit` (optional): Maximum number of results to return.
 * `strict` (optional): Set `strict=1` to only return results in the `context`.
 
-### Parcel details
+### Requesting a Parcel Record details
 
 `GET /api/v1/parcel.json?path=<path>&token=<token>`
 
@@ -121,7 +124,7 @@ Parcel attributes that have a null value are omitted from the results.
 
 #### Response format
 
-All of these requests return a JSON response on success, an array of GeoJSON features representing the matched parcels. These include polygon geometries and `properties`. Our standard fields are documented in the [Loveland Parcel Schema](/articles/schema) (some additional undocumented fields may be included in the `properties`). An empty results set with no error means no parcels could be matched. Parcel attributes that have a null value are omitted from the results. Here's an example response payload with results:
+All of these requests return a [GeoJSON](https://geojson.org/) response on success, an array of [GeoJSON](https://geojson.org/) features representing the matched parcels. These include polygon geometries and `properties`. Our standard fields are documented in the [Loveland Parcel Schema](/articles/schema) (some additional undocumented fields may be included in the `properties`). An empty results set with no error means no parcels could be matched. Parcel attributes that have a null value are omitted from the results. Here's an example response payload with results:
 
     {
       results: [
