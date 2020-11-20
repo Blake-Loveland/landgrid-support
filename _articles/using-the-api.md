@@ -23,7 +23,7 @@ All requests return a [GeoJSON](https://geojson.org/) response containing an arr
 You may get multiple Parcel Records per response. This depends on how you search for parcels via our Parcel API. Address matching, parcel number, owner name matching, parcels in a radius are all example of Parcel API requests that will likely return multiple Parcel Records in each response.
 
 #### Limit Parcel Records returned
-Each Parcel API request can return one or more Parcel Records. 
+Each Parcel API request can return one or more Parcel Records. Any Parcel API request that can return multiple Parcel Records supports the optional `limit=` parameter that will allow you to limit the number of return Parcel Records.
 
 #### API Request Rates
 
