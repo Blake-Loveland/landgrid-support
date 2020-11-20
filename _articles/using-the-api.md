@@ -31,9 +31,9 @@ Rates are limited to 10 simultaneous requests or approximately 5,000 requests pe
 
 #### Authentication and tokens
 
-All requests to the API must include a `token` parameter. If you have an API subscription or Loveland data license, you can find this in **Account Settings > Preferences** after logging into your account at landgrid.com.
+All requests to the API must include a `token` parameter. If you have an API subscription or Loveland data license, you can find this in **Account Settings > API** after logging into your account at landgrid.com.
 
-#### Place paths for context (narrowing searches by area)
+#### Place paths for context (narrow searches by area)
 
 Most API requests can take an optional `context` parameter that will narrow down the search to a specific area. These `context` values are in the form of paths.
 
