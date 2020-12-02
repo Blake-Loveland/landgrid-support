@@ -132,7 +132,7 @@ Exact Date and Time:
 Android Version Number:
 Model Number:
 Landgrid App Version Number:
-Login Email:
+Email used for Logging In to App:
 ```
 
 <br><br>
