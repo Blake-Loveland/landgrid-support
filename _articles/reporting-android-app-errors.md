@@ -23,6 +23,7 @@ In order to track down the bug you experienced in our error logs, we need to kno
 
 <small>Example: 1.14</small>
 
+5) The email you use to login to the Landgrid App
 
 **Note that:**
 
@@ -127,6 +128,7 @@ Date and Time:
 Android Version Number:
 Model Number:
 Landgrid App Version Number:
+Login Email:
 ```
 
 ### If Post Has Not Successfully Uploaded
