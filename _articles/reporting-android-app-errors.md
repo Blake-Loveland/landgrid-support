@@ -7,7 +7,7 @@ title: Reporting Android App Errors
 
 In order to track down the bug you experienced in our error logs, we need to know a few key bits of info:
 
-1) The exact Date + Time the error last occurred.
+1) The exact Date + Time the error last occurred. (We use this to be able to inspect our logs and track down more info about your issue)
 
 <small>Example: 7/22 4:52pm</small>
 
@@ -128,3 +128,21 @@ Android Version Number:
 Model Number:
 Landgrid App Version Number:
 ```
+
+### If Post Has Not Successfully Uploaded
+
+1. What is the status of the post? Options:
+- submitting
+- unsaved
+- temporary fail
+- error
+
+<img src="{{site.baseurl}}/img/issue-post-submitted.png">
+
+2. What is the exact time + date of the last time you submitted? (We use this to be able to take a log at our logs to see what happened at that time)
+
+3. What email are you using to login to the app? (This will help us find you in the logs)
+
+# Common Issue - Too Many Photos in a single Post
+
+The Landgrid app is only designed to handle several photos per post. If you require more than that, let us know! team@landgrid.com
