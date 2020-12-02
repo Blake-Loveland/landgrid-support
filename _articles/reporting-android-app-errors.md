@@ -49,7 +49,7 @@ _We use this to be able to inspect our logs and track down more info about your 
 
 <center>
 
-<img width=150 src="{{site.baseurl}}/img/settings.png">
+<img width=75 src="{{site.baseurl}}/img/settings.png">
 <br><br>
 
 </center>
