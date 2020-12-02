@@ -149,7 +149,7 @@ Options:
 - temporary fail
 - error
 
-<img src="{{site.baseurl}}/img/issue-post-submitted.png">
+<img width=150 src="{{site.baseurl}}/img/issue-post-submitted.png">
 
 2. What is the exact time + date of the last time you submitted? (We use this to be able to take a log at our logs to see what happened at that time)
 
