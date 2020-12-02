@@ -7,7 +7,9 @@ title: Reporting Android App Errors
 
 In order to track down the bug you experienced in our error logs, we need to know a few key bits of info:
 
-1) The exact Date + Time the error last occurred. (We use this to be able to inspect our logs and track down more info about your issue)
+1) The exact Date + Time the error last occurred. 
+
+_We use this to be able to inspect our logs and track down more info about your issue._
 
 <small>Example: 7/22 4:52pm</small>
 
@@ -25,7 +27,7 @@ In order to track down the bug you experienced in our error logs, we need to kno
 
 5) The email you use to login to the Landgrid App
 
-This will help us find you in the logs
+_We use this to be able to inspect our logs and track down more info about your issue._
 
 **Note that:**
 
