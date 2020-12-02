@@ -124,7 +124,7 @@ Here's a template you can use to submit your bug.
 
 ```
 What Happened:
-Date and Time:
+Exact Date and Time:
 Android Version Number:
 Model Number:
 Landgrid App Version Number:
@@ -141,7 +141,9 @@ Login Email:
 
 ### If Post Has Not Successfully Uploaded
 
-1. What is the status of the post? Options:
+1. What is the status of the post? You can find this in the Posts section of the app.
+
+Options:
 - submitting
 - unsaved
 - temporary fail
