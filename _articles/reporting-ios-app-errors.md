@@ -9,6 +9,8 @@ In order to track down the bug you experienced in our error logs, we need to kno
 
 1) The exact Date + Time the error last occurred.
 
+_We use this to be able to inspect our logs and track down more info about your issue._
+
 <small>Example: 7/22 4:52pm</small>
 
 2) iPhone Version Number
@@ -22,6 +24,11 @@ In order to track down the bug you experienced in our error logs, we need to kno
 4) Landgrid App Version Number
 
 <small>Example: 1.14</small>
+
+5) The email you use to login to the Landgrid App
+
+_We use this to be able to inspect our logs and track down more info about your issue._
+
 
 **Note that:**
 
@@ -117,4 +124,42 @@ Date and Time:
 iPhone Version Number:
 iPhone Model Number:
 Landgrid App Version Number:
+Email used for Logging In to App:
 ```
+
+
+
+
+### If Post Has Not Successfully Uploaded
+
+**What is the status of the post?** 
+
+You can find this in the Posts section of the app.
+
+<img width=300 src="{{site.baseurl}}/img/issue-post-submitted.png">
+
+Options:
+
+- submitting
+- unsaved
+- temporary fail
+- error
+
+
+
+
+<br><br>
+
+----
+
+<br><br>
+
+### Common Issue - Too Many Photos in a single Post
+
+The Landgrid app is only designed to handle several photos per post. If you require more than that, let us know! team@landgrid.com
+
+<br><br>
+
+----
+
+<br><br>
