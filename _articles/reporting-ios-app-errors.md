@@ -47,7 +47,13 @@ _We use this to be able to inspect our logs and track down more info about your 
 
 1) Click on the **Settings Icon**
 
+<center>
+
 <img src="{{site.baseurl}}/img/ios_settings.png">
+<br><br>
+
+</center>
+
 
 
 2) Click **General.**
@@ -55,7 +61,7 @@ _We use this to be able to inspect our logs and track down more info about your 
 
 <center>
 
-<img src="{{site.baseurl}}/img/ios_model_1.png">
+<img width=250 src="{{site.baseurl}}/img/ios_model_1.png">
 <br><br>
 
 </center>
@@ -65,7 +71,7 @@ _We use this to be able to inspect our logs and track down more info about your 
 
 <center>
 
-<img src="{{site.baseurl}}/img/ios_model_2.png">
+<img width=250 src="{{site.baseurl}}/img/ios_model_2.png">
 <br><br>
 
 </center>
@@ -76,7 +82,7 @@ _We use this to be able to inspect our logs and track down more info about your 
 
 <center>
 
-<img src="{{site.baseurl}}/img/ios_model_3.png">
+<img width=250 src="{{site.baseurl}}/img/ios_model_3.png">
 
 <br><br>
 </center>
@@ -87,7 +93,7 @@ _We use this to be able to inspect our logs and track down more info about your 
 
 <center>
 
-<img src="{{site.baseurl}}/img/ios_model_4.png">
+<img width=250 src="{{site.baseurl}}/img/ios_model_4.png">
 
 </center>
 
