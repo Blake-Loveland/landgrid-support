@@ -13,7 +13,7 @@ _We use this to be able to inspect our logs and track down more info about your 
 
 2) The exact Date + Time the error last occurred. 
 
-_This also helps us find you in our logs._
+_This also helps us find you in our logs. If you don't know the last date and time, but are able trigger the error again, you can retrigger the error and send us that date and time._
 
 <small>Example: 7/22 4:52pm</small>
 
@@ -29,6 +29,7 @@ _This also helps us find you in our logs._
 
 <small>Example: 1.14</small>
 
+Send your bug report to: team@landgrid.com
 
 **Note that:**
 
