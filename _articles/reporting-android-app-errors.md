@@ -131,6 +131,14 @@ Landgrid App Version Number:
 Login Email:
 ```
 
+<br><br>
+
+----
+
+<br><br>
+
+
+
 ### If Post Has Not Successfully Uploaded
 
 1. What is the status of the post? Options:
@@ -144,6 +152,13 @@ Login Email:
 2. What is the exact time + date of the last time you submitted? (We use this to be able to take a log at our logs to see what happened at that time)
 
 3. What email are you using to login to the app? (This will help us find you in the logs)
+
+
+<br><br>
+
+----
+
+<br><br>
 
 # Common Issue - Too Many Photos in a single Post
 
