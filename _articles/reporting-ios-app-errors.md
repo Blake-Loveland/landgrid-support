@@ -136,7 +136,10 @@ Email used for Logging In to App:
 
 You can find this in the Posts section of the app.
 
+<center>
 <img width=300 src="{{site.baseurl}}/img/issue-post-submitted.png">
+<br><br>
+</center>
 
 Options:
 
