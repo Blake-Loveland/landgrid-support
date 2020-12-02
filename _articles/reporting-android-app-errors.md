@@ -7,27 +7,28 @@ title: Reporting Android App Errors
 
 In order to track down the bug you experienced in our error logs, we need to know a few key bits of info:
 
-1) The exact Date + Time the error last occurred. 
+1) The email you use to login to the Landgrid App
 
 _We use this to be able to inspect our logs and track down more info about your issue._
+
+2) The exact Date + Time the error last occurred. 
+
+_This also helps us find you in our logs._
 
 <small>Example: 7/22 4:52pm</small>
 
-2) Android Version Number
+3) Android Version Number
 
 <small>Example: Android 9</small>
 
-3) Model Number 
+4) Model Number 
 
 <small>Example: XT1900-1</small>
 
-4) Landgrid App Version Number
+5) Landgrid App Version Number
 
 <small>Example: 1.14</small>
 
-5) The email you use to login to the Landgrid App
-
-_We use this to be able to inspect our logs and track down more info about your issue._
 
 **Note that:**
 
