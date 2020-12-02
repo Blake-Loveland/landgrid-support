@@ -25,6 +25,8 @@ In order to track down the bug you experienced in our error logs, we need to kno
 
 5) The email you use to login to the Landgrid App
 
+This will help us find you in the logs
+
 **Note that:**
 
 - The Model Number will never change, so you'll only need to get it once if you can associate it with a single Surveyor or device.
@@ -141,19 +143,20 @@ Login Email:
 
 ### If Post Has Not Successfully Uploaded
 
-1. What is the status of the post? You can find this in the Posts section of the app.
+**What is the status of the post?** 
+
+You can find this in the Posts section of the app.
+
+<img width=300 src="{{site.baseurl}}/img/issue-post-submitted.png">
 
 Options:
+
 - submitting
 - unsaved
 - temporary fail
 - error
 
-<img width=300 src="{{site.baseurl}}/img/issue-post-submitted.png">
 
-2. What is the exact time + date of the last time you submitted? (We use this to be able to take a log at our logs to see what happened at that time)
-
-3. What email are you using to login to the app? (This will help us find you in the logs)
 
 
 <br><br>
