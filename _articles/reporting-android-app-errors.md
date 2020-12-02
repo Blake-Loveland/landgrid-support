@@ -162,6 +162,6 @@ Options:
 
 <br><br>
 
-# Common Issue - Too Many Photos in a single Post
+### Common Issue - Too Many Photos in a single Post
 
 The Landgrid app is only designed to handle several photos per post. If you require more than that, let us know! team@landgrid.com
