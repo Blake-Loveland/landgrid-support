@@ -74,7 +74,19 @@ the category list in `admin/config.yml`
 
 ## Updating the schema 
 
-The schema lives at `_data/schema.yml`
+The schema subrepo lives in the `_data` folder. To update it:
+
+```
+cd _data/schema
+git checkout master
+git pull
+cd ..
+git commit -am "Update schema" 
+git push origin gh-pages
+(or push to a branch)
+```
+
+The schema is rendered in `_articles/schema.md`
 
 ## Netlify editor
 
