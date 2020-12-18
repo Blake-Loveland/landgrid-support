@@ -66,7 +66,7 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 **To return all parcels in a radius of a point:**
 * `radius` (optional): Give a radius in meters for which all parcels will be returned if they are within a definable radius from the lat-long point. Default radius is 50, maximum 500. No need to include the 'm' for meters, just the integer value between 0 and 500.
 * `nearest`: Pass `1` to return parcels within a radius instead of an exact match at the lat-long.
-* `limit` (optional): Maximum number of results to return.
+* `limit` (optional, no default limit): Maximum number of results to return.
 
 
 `GET /api/v1/search.json?lat=<y>&lon=<x>&nearest=1&radius=<meters>&token=<token>`
@@ -78,7 +78,7 @@ We recommend using lat-long search for most lookups. Because parcels may span se
 **Request parameters:**
 * `query`: The [URL Encoded](https://www.w3schools.com/tags/ref_urlencode.ASP) address to look up
 * `context` (optional): See notes on `context` parameter above
-* `limit` (optional): Maximum number of results to return.
+* `limit` (optional, default: 20): Maximum number of results to return.
 * `strict` (optional): Set `strict=1` to only return results in the `context`.
 
 **Response:**
@@ -93,7 +93,7 @@ Parcel attributes that have a null value are omitted from the results.
 **Request parameters:**
 * `parcelnumb`: The assessor's parcel number to look up.
 * `context` (optional): To specify what county or municipality to search in, you can provide a path. See description above.
-* `limit` (optional): Maximum number of results to return.
+* `limit` (optional, default: 20): Maximum number of results to return.
 * `strict` (optional): Set `strict=1` to only return results in the `context`.
 
 #### By owner name
@@ -107,7 +107,7 @@ For example, if you are looking for a parcel owned by "Jones, Festus", you can s
 **Request parameters:**
 * `owner`: The owner name in "Last, First" format. Matches by prefix, you can pass just a last name to get any name beginning with that string. (Case insensitive, minimum 4 characters)
 * `context` (optional): To specify what county or municipality to search in, you can provide a path. See description above.
-* `limit` (optional): Maximum number of results to return.
+* `limit` (optional, default: 20): Maximum number of results to return.
 * `strict` (optional): Set `strict=1` to only return results in the `context`.
 
 ### Requesting a Parcel Record details
