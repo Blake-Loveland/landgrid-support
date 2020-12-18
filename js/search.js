@@ -6,9 +6,9 @@ $(function() {
   var posts;
   var index = lunr(function () {
     this.field('id');
-    this.field('title', { boost: 25 });
+    this.field('title', { boost: 10 });
     this.field('category');
-    this.field('content', { boost: 10 });
+    this.field('content', { boost: 50 });
   });
 
   function getPost(id) {
@@ -22,15 +22,17 @@ $(function() {
   function search() {
     var val = $(this).val();
     var results = index.search(val);
-        console.log("Got results", results);
+    console.log("Got results", results);
 
     $('.results').empty().show();
+
+    results = results.filter(function(result) {
+      return result.score > 0.005
+    })
+
     results.forEach(function(result) {
-      if (result.score < 0.005) {
-        return;
-      }
       var post = getPost(result.ref);
-      console.log("POst?", post);
+      console.log("Post?", post);
       $('.results')
             .append('<a href="{{site.baseurl}}' + post.id + '" class="result"><h2>' + post.title + '</h2><p>' + post.intro + '</p></a>');
     });
